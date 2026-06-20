@@ -5,7 +5,7 @@ class Main {
             Loginframe.setVisible(true);
         }
 
-        //temp chane to test
+        //temp chane t
         catch (Exception e) {
             e.printStackTrace();
         }

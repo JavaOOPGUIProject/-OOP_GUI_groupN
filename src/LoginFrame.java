@@ -156,12 +156,12 @@ public class LoginFrame extends JFrame {
         role.setForeground(Color.MAGENTA);
         role.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        //Button_Panel
+        //Button_Panel (role buttons + sign in button together)
         JPanel Button_Panel = new JPanel();
         Button_Panel.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 0));
         Button_Panel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        //Admin_buttton
+        //Admin_button
         JButton admin_button = new JButton("Admin");
         admin_button.setPreferredSize(new Dimension(150, 40));
         admin_button.setBackground(Color.MAGENTA);
@@ -183,12 +183,12 @@ public class LoginFrame extends JFrame {
         Button_Panel.add(student_button);
         Button_Panel.add(lecturer_button);
 
-        //Signup button
-        JButton signUpBtn = new JButton("Sign Up");
-        signUpBtn.setBackground(Color.MAGENTA);
-        signUpBtn.setForeground(Color.WHITE);
-        signUpBtn.setAlignmentX(Component.LEFT_ALIGNMENT);
-        signUpBtn.setMaximumSize(new Dimension(500, 45));
+        //Sign In button — placed right below the 3 role buttons
+        JButton signInButton = new JButton("Sign In");
+        signInButton.setBackground(Color.MAGENTA);
+        signInButton.setForeground(Color.WHITE);
+        signInButton.setAlignmentX(Component.LEFT_ALIGNMENT);
+        signInButton.setMaximumSize(new Dimension(500, 45));
 
         //Adding all components to the panel
         panel.add(username);
@@ -206,8 +206,15 @@ public class LoginFrame extends JFrame {
         panel.add(Box.createVerticalStrut(15));
         panel.add(Button_Panel);
 
-        panel.add(Box.createVerticalStrut(30));
-        panel.add(signUpBtn);
+        panel.add(Box.createVerticalStrut(20));
+        panel.add(signInButton);
+
+        panel.add(Box.createVerticalGlue());
+
+        signInButton.addActionListener(e -> {
+            new DashboardFrame();
+            dispose();
+        });
 
         return panel;
     }
@@ -291,11 +298,11 @@ public class LoginFrame extends JFrame {
         Button_Panel.add(lecturer_button);
 
         //Sign up Button
-        JButton signUpBtn = new JButton("Sign Up");
-        signUpBtn.setBackground(Color.MAGENTA);
-        signUpBtn.setForeground(Color.WHITE);
-        signUpBtn.setAlignmentX(Component.LEFT_ALIGNMENT);
-        signUpBtn.setMaximumSize(new Dimension(500, 45));
+        JButton signUpButton = new JButton("Sign Up");
+        signUpButton.setBackground(Color.MAGENTA);
+        signUpButton.setForeground(Color.WHITE);
+        signUpButton.setAlignmentX(Component.LEFT_ALIGNMENT);
+        signUpButton.setMaximumSize(new Dimension(500, 45));
 
         //Adding_Components
         panel.add(username);
@@ -318,12 +325,19 @@ public class LoginFrame extends JFrame {
         panel.add(Box.createVerticalStrut(15));
         panel.add(Button_Panel);
 
-        panel.add(Box.createVerticalStrut(30));
-        panel.add(signUpBtn);
+        panel.add(Box.createVerticalStrut(10));
+        panel.add(signUpButton);
+
+        signUpButton.addActionListener(e -> {
+            new DashboardFrame();
+            dispose();
+        });
 
         return panel;
     }
+
     private void setActiveTab(JLabel label, boolean active) {
         label.setForeground(active ? activeColor : inactiveColor);
     }
+
 }

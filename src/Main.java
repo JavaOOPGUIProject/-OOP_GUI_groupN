@@ -4,6 +4,5 @@ class Main {
             LoginFrame Loginframe = new LoginFrame();
             Loginframe.setVisible(true);
 
-
     }
 }

@@ -1,7 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 public class StudentPanel extends JPanel {
@@ -81,20 +84,22 @@ public class StudentPanel extends JPanel {
         JTable StudentTable = new JTable(model);
         StudentTable.setFont(new Font("SansSerif", Font.BOLD,12));
         StudentTable.setForeground(Color.DARK_GRAY);
-        StudentTable.getTableHeader().setFont(new Font("SansSerif",Font.BOLD,14));
+        StudentTable.getTableHeader().setFont(new Font("SansSerif",Font.BOLD,18));
         StudentTable.getTableHeader().setForeground(Active);
         StudentTable.setRowHeight(40);
         StudentTable.getTableHeader().setPreferredSize(new java.awt.Dimension(0,40));
         StudentTable.setGridColor(Active);
         StudentTable.setShowGrid(true);
 
-        int tableWidth = StudentTable.getPreferredSize().width;
+        DefaultTableCellRenderer center = new DefaultTableCellRenderer();
+        center.setHorizontalAlignment(JLabel.CENTER);
+        StudentTable.setDefaultRenderer(Object.class, center);
 
         JScrollPane StScol = new JScrollPane(StudentTable);
         StScol.setBorder(BorderFactory.createEmptyBorder());
         StScol.setBorder(new LineBorder(Active));
-        JPanel TablePanel = new JPanel(new BorderLayout());
 
+        JPanel TablePanel = new JPanel(new BorderLayout());
         TablePanel.setBorder(new EmptyBorder(10,30,10,30));
         TablePanel.add(StScol);
         add(Box.createVerticalStrut(20));
@@ -108,8 +113,7 @@ public class StudentPanel extends JPanel {
         JPanel SaveBtnPanel = new JPanel();
         SaveBtnPanel.setLayout(new FlowLayout(FlowLayout.CENTER,150,20));
         SaveBtnPanel.setOpaque(false);
-        SaveBtnPanel.setMaximumSize(new Dimension(Integer.MAX_VALUE,75));
-        SaveBtnPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
 
         SaveBtnPanel.add(SaveBtn);
 
@@ -117,15 +121,16 @@ public class StudentPanel extends JPanel {
 
 // set delete button access
         deleteBtn.addActionListener(e -> {
-            deleteBtn.setBackground(Active);
             int Selected = StudentTable.getSelectedRow();
 
+            deleteBtn.setBackground(Active);
+
             if(Selected != -1) {
-                JOptionPane.showMessageDialog(null,"Are you sure.");
+                JOptionPane.showMessageDialog(null,"Are you sure.!");
                 model.removeRow(Selected);
             }
             else{
-                JOptionPane.showMessageDialog(null,"Please Select a row First !");
+                JOptionPane.showMessageDialog(null,"Please Select a Student First !");
             }
             deleteBtn.setBackground(Color.WHITE);
         });
@@ -142,6 +147,13 @@ public class StudentPanel extends JPanel {
         dialog.setSize(400,300);
         dialog.setLocationRelativeTo(null);
         dialog.setLayout(new BorderLayout(10,10));
+        dialog.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
+        dialog.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                addBtn.setBackground(Color.WHITE);
+            }
+        });
+
 
         JPanel Form = new JPanel(new GridLayout(5,2,5,5));
         Form.setBorder(new EmptyBorder(20,40,20,40));
@@ -154,7 +166,7 @@ public class StudentPanel extends JPanel {
         Form.add(degree);
         Form.add(new JLabel("Email : "));
         Form.add(email);
-        Form.add(new JLabel("Mobile : "));
+        Form.add(new JLabel("Mobile Number : "));
         Form.add(mobile);
 
         dialog.add(Form,BorderLayout.CENTER);
@@ -166,6 +178,16 @@ public class StudentPanel extends JPanel {
         dialog.add(saveP,BorderLayout.SOUTH);
 
         save.addActionListener(e -> {
+
+            if(name.getText().trim().isEmpty() ||
+                    id.getText().trim().isEmpty() ||
+                    degree.getText().trim().isEmpty() ||
+                    email.getText().trim().isEmpty() ||
+                    mobile.getText().trim().isEmpty()) {
+
+                JOptionPane.showMessageDialog(dialog, "Please fill all fields!");
+                return;
+            }
 
             model.addRow(new Object[]{
                     name.getText(),
@@ -202,7 +224,13 @@ public class StudentPanel extends JPanel {
         EditDialog.setSize(400,300);
         EditDialog.setLocationRelativeTo(null);
         EditDialog.setLayout(new BorderLayout(10,10));
-        EditDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        EditDialog.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
+        EditDialog.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                editBtn.setBackground(Color.WHITE);
+            }
+        });
+
 
 
         JPanel EditForm = new JPanel(new GridLayout(5,2,5,5));
@@ -230,11 +258,12 @@ public class StudentPanel extends JPanel {
         final int[] editingRow = {-1};
 
         editBtn.addActionListener(e -> {
-            editBtn.setBackground(Active);
             int Selected = StudentTable.getSelectedRow();
 
+            editBtn.setBackground(Active);
+
             if(Selected == -1){
-                JOptionPane.showMessageDialog(this,"Please Select a Sudent Fisrts.");
+                JOptionPane.showMessageDialog(this,"Please Select a Sudent First.");
                 editBtn.setBackground(Color.WHITE);
                 return;
             }
@@ -247,8 +276,6 @@ public class StudentPanel extends JPanel {
 
             editingRow[0] = Selected;
             EditDialog.setVisible(true);
-
-
         });
 
         Update.addActionListener(e -> {

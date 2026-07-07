@@ -1,8 +1,11 @@
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class LecturePanel extends JPanel {
     Color Active = new Color(150,100,100);
@@ -53,36 +56,39 @@ public class LecturePanel extends JPanel {
         add(Box.createVerticalStrut(10));
 
        // add table
-        String[] StColumns = {"Full Name","Lecture ID","Course Id","Email","Mobile Number"};
+        String[] StColumns = {"Full Name","Department","Course Teaching","Email","Mobile Number"};
         Object [][] Stdata = {
-                {"Sashan Avishka","Lec001","CTEC22023","sashanavishka7@gmail.com","773929933"},
-                {"Sashan Avishka","Lec001","CTEC22023","sashanavishka7@gmail.com","773929933"},
-                {"Sashan Avishka","Lec001","CTEC22023","sashanavishka7@gmail.com","773929933"},
-                {"Sashan Avishka","Lec001","CTEC22023","sashanavishka7@gmail.com","773929933"},
-                {"Sashan Avishka","Lec001","CTEC22023","sashanavishka7@gmail.com","773929933"},
-                {"Sashan Avishka","Lec001","CTEC22023","sashanavishka7@gmail.com","773929933"},
-                {"Sashan Avishka","Lec001","CTEC22023","sashanavishka7@gmail.com","773929933"},
-                {"Sashan Avishka","Lec001","CTEC22023","sashanavishka7@gmail.com","773929933"},
-                {"Sashan Avishka","Lec001","CTEC22023","sashanavishka7@gmail.com","773929933"},
-                {"Sashan Avishka","Lec001","CTEC22023","sashanavishka7@gmail.com","773929933"},
-                {"Sashan Avishka","Lec001","CTEC22023","sashanavishka7@gmail.com","773929933"},
-                {"Sashan Avishka","Lec001","CTEC22023","sashanavishka7@gmail.com","773929933"},
-                {"Sashan Avishka","Lec001","CTEC22023","sashanavishka7@gmail.com","773929933"},
-                {"Sashan Avishka","Lec001","CTEC22023","sashanavishka7@gmail.com","773929933"},
-                {"Sashan Avishka","Lec001","CTEC22023","sashanavishka7@gmail.com","773929933"}
+                {"Sashan Avishka","Software Engineering","CTEC22023","sashanavishka7@gmail.com","773929933"},
+                {"Sashan Avishka","Software Engineering","CTEC22023","sashanavishka7@gmail.com","773929933"},
+                {"Sashan Avishka","Software Engineering","CTEC22023","sashanavishka7@gmail.com","773929933"},
+                {"Sashan Avishka","Software Engineering","CTEC22023","sashanavishka7@gmail.com","773929933"},
+                {"Sashan Avishka","Software Engineering","CTEC22023","sashanavishka7@gmail.com","773929933"},
+                {"Sashan Avishka","Software Engineering","CTEC22023","sashanavishka7@gmail.com","773929933"},
+                {"Sashan Avishka","Software Engineering","CTEC22023","sashanavishka7@gmail.com","773929933"},
+                {"Sashan Avishka","Software Engineering","CTEC22023","sashanavishka7@gmail.com","773929933"},
+                {"Sashan Avishka","Software Engineering","CTEC22023","sashanavishka7@gmail.com","773929933"},
+                {"Sashan Avishka","Software Engineering","CTEC22023","sashanavishka7@gmail.com","773929933"},
+                {"Sashan Avishka","Software Engineering","CTEC22023","sashanavishka7@gmail.com","773929933"},
+                {"Sashan Avishka","Software Engineering","CTEC22023","sashanavishka7@gmail.com","773929933"},
+                {"Sashan Avishka","Software Engineering","CTEC22023","sashanavishka7@gmail.com","773929933"},
+                {"Sashan Avishka","Software Engineering","CTEC22023","sashanavishka7@gmail.com","773929933"}
+
         };
+
         DefaultTableModel model = new DefaultTableModel(Stdata,StColumns);
         JTable LectureTable = new JTable(model);
         LectureTable.setFont(new Font("SansSerif", Font.BOLD,12));
         LectureTable.setForeground(Color.DARK_GRAY);
-        LectureTable.getTableHeader().setFont(new Font("SansSerif",Font.BOLD,14));
+        LectureTable.getTableHeader().setFont(new Font("SansSerif",Font.BOLD,18));
         LectureTable.getTableHeader().setForeground(Active);
         LectureTable.setRowHeight(40);
         LectureTable.getTableHeader().setPreferredSize(new java.awt.Dimension(0,40));
         LectureTable.setGridColor(Active);
         LectureTable.setShowGrid(true);
 
-        int tableWidth = LectureTable.getPreferredSize().width;
+        DefaultTableCellRenderer center = new DefaultTableCellRenderer();
+        center.setHorizontalAlignment(JLabel.CENTER);
+        LectureTable.setDefaultRenderer(Object.class,center);
 
         JScrollPane StScol = new JScrollPane(LectureTable);
         StScol.setBorder(BorderFactory.createEmptyBorder());
@@ -103,8 +109,7 @@ public class LecturePanel extends JPanel {
         JPanel SaveBtnPanel = new JPanel();
         SaveBtnPanel.setLayout(new FlowLayout(FlowLayout.CENTER,150,20));
         SaveBtnPanel.setOpaque(false);
-        SaveBtnPanel.setMaximumSize(new Dimension(Integer.MAX_VALUE,75));
-        SaveBtnPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
 
         SaveBtnPanel.add(SaveBtn);
 
@@ -125,9 +130,9 @@ public class LecturePanel extends JPanel {
         });
 
 // set add button
-        JTextField name = new JTextField();
-        JTextField id = new JTextField();
-        JTextField degree = new JTextField();
+        JTextField Fullname = new JTextField();
+        JTextField Department = new JTextField();
+        JTextField CourseTeaching = new JTextField();
         JTextField email = new JTextField();
         JTextField mobile = new JTextField();
 
@@ -136,19 +141,26 @@ public class LecturePanel extends JPanel {
         dialog.setSize(400,300);
         dialog.setLocationRelativeTo(null);
         dialog.setLayout(new BorderLayout(10,10));
+        dialog.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
+        dialog.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                addBtn.setBackground(Color.WHITE);
+            }
+        });
+
 
         JPanel Form = new JPanel(new GridLayout(5,2,5,5));
         Form.setBorder(new EmptyBorder(20,40,20,40));
 
         Form.add(new JLabel("Full Name : "));
-        Form.add(name);
-        Form.add(new JLabel("Lecture ID : "));
-        Form.add(id);
-        Form.add(new JLabel("Course Id : "));
-        Form.add(degree);
+        Form.add(Fullname);
+        Form.add(new JLabel("Department : "));
+        Form.add(Department);
+        Form.add(new JLabel("Course Teaching : "));
+        Form.add(CourseTeaching);
         Form.add(new JLabel("Email : "));
         Form.add(email);
-        Form.add(new JLabel("Mobile : "));
+        Form.add(new JLabel("Mobile Number : "));
         Form.add(mobile);
 
         dialog.add(Form,BorderLayout.CENTER);
@@ -161,30 +173,42 @@ public class LecturePanel extends JPanel {
 
         save.addActionListener(e -> {
 
+            if(Fullname.getText().trim().isEmpty() ||
+                    Department.getText().trim().isEmpty() ||
+                    CourseTeaching.getText().trim().isEmpty() ||
+                    email.getText().trim().isEmpty() ||
+                    mobile.getText().trim().isEmpty()) {
+
+                JOptionPane.showMessageDialog(dialog, "Please fill all fields!");
+                return;
+            }
+
             model.addRow(new Object[]{
-                    name.getText(),
-                    id.getText(),
-                    degree.getText(),
+                    Fullname.getText(),
+                    Department.getText(),
+                    CourseTeaching.getText(),
                     email.getText(),
                     mobile.getText()
             });
-            name.setText("");
-            id.setText("");
-            degree.setText("");
+            Fullname.setText("");
+            Department.setText("");
+            CourseTeaching.setText("");
             email.setText("");
             mobile.setText("");
 
             dialog.dispose();
+            dialog.setBackground(Color.WHITE);
         });
 
         addBtn.addActionListener(e -> {
+            addBtn.setBackground(Active);
             dialog.setVisible(true);
         });
 
 //set edit button
-        JTextField Editname = new JTextField();
-        JTextField Editid = new JTextField();
-        JTextField Editdegree = new JTextField();
+        JTextField EditFullname = new JTextField();
+        JTextField EditDepartment = new JTextField();
+        JTextField EditCourseTeaching = new JTextField();
         JTextField Editemail = new JTextField();
         JTextField Editmobile = new JTextField();
 
@@ -193,19 +217,26 @@ public class LecturePanel extends JPanel {
         EditDialog.setSize(400,300);
         EditDialog.setLocationRelativeTo(null);
         EditDialog.setLayout(new BorderLayout(10,10));
+        EditDialog.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
+        EditDialog.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                editBtn.setBackground(Color.WHITE);
+            }
+        });
+
 
         JPanel EditForm = new JPanel(new GridLayout(5,2,5,5));
         EditForm.setBorder(new EmptyBorder(20,40,20,40));
 
         EditForm.add(new JLabel("Full Name : "));
-        EditForm.add(Editname);
-        EditForm.add(new JLabel("Lecture ID : "));
-        EditForm.add(Editid);
-        EditForm.add(new JLabel("Course Id : "));
-        EditForm.add(Editdegree);
+        EditForm.add(EditFullname);
+        EditForm.add(new JLabel("Department : "));
+        EditForm.add(EditDepartment);
+        EditForm.add(new JLabel("Course Teaching : "));
+        EditForm.add(EditCourseTeaching);
         EditForm.add(new JLabel("Email : "));
         EditForm.add(Editemail);
-        EditForm.add(new JLabel("Mobile : "));
+        EditForm.add(new JLabel("Mobile Number : "));
         EditForm.add(Editmobile);
 
         EditDialog.add(EditForm,BorderLayout.CENTER);
@@ -221,14 +252,18 @@ public class LecturePanel extends JPanel {
         editBtn.addActionListener(e -> {
             int Selected = LectureTable.getSelectedRow();
 
+            editBtn.setBackground(Active);
+
             if(Selected == -1){
-                JOptionPane.showMessageDialog(this,"Please Select a Lecture Fisrts.");
+                JOptionPane.showMessageDialog(this,"Please Select a Lecture First.");
+                editBtn.setBackground(Color.WHITE);
+
                 return;
             }
 
-            Editname.setText(LectureTable.getValueAt(Selected,0).toString());
-            Editid.setText(LectureTable.getValueAt(Selected,1).toString());
-            Editdegree.setText(LectureTable.getValueAt(Selected,2).toString());
+            EditFullname.setText(LectureTable.getValueAt(Selected,0).toString());
+            EditDepartment.setText(LectureTable.getValueAt(Selected,1).toString());
+            EditCourseTeaching.setText(LectureTable.getValueAt(Selected,2).toString());
             Editemail.setText(LectureTable.getValueAt(Selected,3).toString());
             Editmobile.setText(LectureTable.getValueAt(Selected,4).toString());
 
@@ -239,14 +274,16 @@ public class LecturePanel extends JPanel {
         Update.addActionListener(e -> {
 
             if(editingRow[0] != -1){
-                model.setValueAt(Editname.getText(),editingRow[0],0);
-                model.setValueAt(Editid.getText(),editingRow[0],1);
-                model.setValueAt(Editdegree.getText(),editingRow[0],2);
+                model.setValueAt(EditFullname.getText(),editingRow[0],0);
+                model.setValueAt(EditDepartment.getText(),editingRow[0],1);
+                model.setValueAt(EditCourseTeaching.getText(),editingRow[0],2);
                 model.setValueAt(Editemail.getText(),editingRow[0],3);
                 model.setValueAt(Editmobile.getText(),editingRow[0],4);
             }
 
             EditDialog.dispose();
+            editBtn.setBackground(Color.WHITE);
+
         });
 
     }

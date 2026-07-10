@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class DashboardFrame extends JFrame {
 
-    Color purple = new Color(135, 75, 255);
+    Color purple = new Color(150, 100, 100);
     CardLayout cardLayout;
     JPanel contentPanel;
 

@@ -1,14 +1,13 @@
 import javax.swing.*;
-import javax.swing.border.*;
 import java.awt.*;
 
-public class DashboardFrame extends JFrame {
+public class Student extends JFrame {
 
     Color purple = new Color(150, 100, 100);
     CardLayout cardLayout;
     JPanel contentPanel;
 
-    public DashboardFrame() {
+    public Student() {
 
         setTitle("DashboardFrame");
         setExtendedState(JFrame.MAXIMIZED_BOTH);

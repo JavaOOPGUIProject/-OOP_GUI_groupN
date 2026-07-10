@@ -5,6 +5,9 @@ import java.awt.event.MouseEvent;
 
 public class LoginFrame extends JFrame {
 
+    //see the user selectrole
+    private String selectedRole = "";
+
     // Layouts
     CardLayout cardLayout;
     JPanel formPanel;
@@ -17,6 +20,8 @@ public class LoginFrame extends JFrame {
     Color purple = new Color(150,100,100);
     Color activeColor = purple;
     Color inactiveColor = Color.GRAY;
+
+
 
     public LoginFrame() {
 
@@ -205,6 +210,39 @@ public class LoginFrame extends JFrame {
         Button_Panel.add(student_button);
         Button_Panel.add(lecturer_button);
 
+
+        admin_button.addActionListener(e -> {
+            selectedRole = "Admin";
+            selectRoleButton(
+                    admin_button,
+                    admin_button,
+                    student_button,
+                    lecturer_button
+            );
+        });
+
+        student_button.addActionListener(e -> {
+            selectedRole = "Student";
+            selectRoleButton(
+                    student_button,
+                    admin_button,
+                    student_button,
+                    lecturer_button
+            );
+        });
+
+        lecturer_button.addActionListener(e -> {
+            selectedRole = "Lecturer";
+            selectRoleButton(
+                    lecturer_button,
+                    admin_button,
+                    student_button,
+                    lecturer_button
+            );
+        });
+
+
+
         //Sign In button — placed right below the 3 role buttons
         RoundedButton signInButton = new RoundedButton("Sign In",30);
         signInButton.setBackground(purple);
@@ -236,13 +274,43 @@ public class LoginFrame extends JFrame {
         panel.add(Box.createVerticalGlue());
 
         signInButton.addActionListener(e -> {
-            new DashboardFrame();
+
+            if (selectedRole.equals("Student")) {
+                new Student();   // Student page
+
+            } else if (selectedRole.equals("Admin")) {
+                new AdminDashboard();   // Admin page
+
+            } else if (selectedRole.equals("Lecturer")) {
+                new LecturerDashboard(); // Lecturer page
+
+            } else {
+                JOptionPane.showMessageDialog(this,
+                        "Please select a role!");
+                return;
+            }
+
             dispose();
         });
 
         return panel;
     }
+    private void selectRoleButton(
+            RoundedButton selected,
+            RoundedButton admin_button,
+            RoundedButton student_button,
+            RoundedButton lecturer_button) {
 
+        admin_button.setBackground(purple);
+        student_button.setBackground(purple);
+        lecturer_button.setBackground(purple);
+
+        admin_button.setForeground(Color.WHITE);
+        student_button.setForeground(Color.WHITE);
+        lecturer_button.setForeground(Color.WHITE);
+
+        selected.setBackground(new Color(220,150,150));
+    }
     //SignUp form Function
     private JPanel createSignUpForm() {
 
@@ -364,7 +432,7 @@ public class LoginFrame extends JFrame {
         panel.add(signUpButton);
 
         signUpButton.addActionListener(e -> {
-            new DashboardFrame();
+            new Student();
             dispose();
         });
 

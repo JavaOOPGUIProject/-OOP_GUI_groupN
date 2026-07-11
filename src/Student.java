@@ -77,21 +77,27 @@ public class Student extends JFrame {
         leftPanel.add(courseButton);
 
         leftPanel.add(Box.createVerticalGlue());
+        RoundedButton logoutButton = new RoundedButton("LOG OUT", 20);
 
-        RoundedButton logoutButton = new RoundedButton("⎋", 100);
-        logoutButton.setPreferredSize(new Dimension(90, 90));
-        logoutButton.setMaximumSize(new Dimension(90, 90));
-        logoutButton.setFont(new Font("Segoe UI Symbol", Font.BOLD, 42));
+        logoutButton.setPreferredSize(new Dimension(300, 60));
+        logoutButton.setMaximumSize(new Dimension(300, 60));
+        logoutButton.setFont(new Font("Arial", Font.BOLD, 24));
+
         logoutButton.setBackground(Color.WHITE);
         logoutButton.setForeground(purple);
+
         logoutButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         leftPanel.add(logoutButton);
         leftPanel.add(Box.createVerticalStrut(30));
 
-        leftPanel.add(logoutButton);
+        logoutButton.addActionListener(e -> {
 
-        leftPanel.add(Box.createVerticalGlue());
+            dispose();
+
+            new LoginFrame();
+
+        });
 
 
         //Right panel
@@ -146,20 +152,7 @@ public class Student extends JFrame {
 
 
         // ---- Button actions ----
-        logoutButton.addActionListener(e -> {
 
-            int option = JOptionPane.showConfirmDialog(
-                    this,
-                    "Do you want to logout?",
-                    "Logout",
-                    JOptionPane.YES_NO_OPTION
-            );
-
-            if (option == JOptionPane.YES_OPTION) {
-                dispose();
-                new LoginFrame();
-            }
-        });
         profileButton.addActionListener(e  -> cardLayout.show(contentPanel, "profile"));
         timetableButton.addActionListener(e -> cardLayout.show(contentPanel, "timetable"));
         courseButton.addActionListener(e   -> cardLayout.show(contentPanel, "course"));

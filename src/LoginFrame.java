@@ -301,18 +301,17 @@ public class LoginFrame extends JFrame {
             try {
                 Connection con = DBConnection.getConnection();
 
-                String sql = "SELECT Role FROM login WHERE Username=? AND Password=?";
+                String sql = "SELECT * FROM login WHERE Username=? AND Password=? AND Role=?";
 
                 PreparedStatement ps = con.prepareStatement(sql);
 
                 ps.setString(1, sUsername);
                 ps.setString(2, uPassword);
+                ps.setString(3,selectedRole);
 
                 ResultSet rs = ps.executeQuery();
 
                 if (rs.next()) {
-
-                    // Changed variable name from 'role' to 'userRole'
                     String userRole = rs.getString("Role");
 
                     JOptionPane.showMessageDialog(null, "Login Successful!");
@@ -340,7 +339,7 @@ public class LoginFrame extends JFrame {
                 } else {
 
                     JOptionPane.showMessageDialog(null,
-                            "Invalid Username or Password!");
+                            "Invalid Username,Password or Role!!");
 
                 }
 

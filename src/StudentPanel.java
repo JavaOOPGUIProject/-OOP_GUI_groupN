@@ -11,37 +11,36 @@ public class StudentPanel extends JPanel {
 
     Color Active = new Color(150,100,100);
 
-    public StudentPanel(){
+    public StudentPanel() {
 
-        setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         add(Box.createVerticalStrut(20));
 // add title
         JLabel StudentPage = new JLabel("Student");
-        StudentPage.setFont(new Font("SansSerif", Font.BOLD,45));
+        StudentPage.setFont(new Font("SansSerif", Font.BOLD, 45));
         StudentPage.setForeground(Active);
         StudentPage.setAlignmentX(Component.CENTER_ALIGNMENT);
         add(StudentPage);
 // add exit delet and add buttons
         JPanel ButtonsRow = new JPanel();
-        ButtonsRow.setLayout(new FlowLayout(FlowLayout.CENTER,150,20));
+        ButtonsRow.setLayout(new FlowLayout(FlowLayout.CENTER, 150, 20));
         ButtonsRow.setOpaque(false);
-        ButtonsRow.setMaximumSize(new Dimension(Integer.MAX_VALUE,75));
+        ButtonsRow.setMaximumSize(new Dimension(Integer.MAX_VALUE, 75));
         ButtonsRow.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 
         JButton addBtn = new JButton("Add New");
         addBtn.setBackground(Color.WHITE);
         addBtn.setForeground(Color.DARK_GRAY);
-        addBtn.setFont(new Font("SansSerif", Font.BOLD,20));
+        addBtn.setFont(new Font("SansSerif", Font.BOLD, 20));
         JButton editBtn = new JButton("Edit");
         editBtn.setBackground(Color.WHITE);
-        editBtn.setFont(new Font("SansSerif", Font.BOLD,20));
+        editBtn.setFont(new Font("SansSerif", Font.BOLD, 20));
         editBtn.setForeground(Color.DARK_GRAY);
         JButton deleteBtn = new JButton("Delete");
         deleteBtn.setBackground(Color.WHITE);
-        deleteBtn.setFont(new Font("SansSerif", Font.BOLD,20));
+        deleteBtn.setFont(new Font("SansSerif", Font.BOLD, 20));
         deleteBtn.setForeground(Color.DARK_GRAY);
-
 
 
         addBtn.setBounds(100, 10, 150, 50);
@@ -56,38 +55,38 @@ public class StudentPanel extends JPanel {
 
         add(Box.createVerticalStrut(10));
 // add table
-        String[] StColumns = {"Full Name","Student ID","Degree","Email","Mobile Number"};
-        Object [][] Stdata = {
-                {"Sashan Avishka","CT/22/026","BICT","sashanavishka7@gmail.com","773929933"},
-                {"Sashan Avishka","CT/22/026","BICT","sashanavishka7@gmail.com","773929933"},
-                {"Sashan Avishka","CT/22/026","BICT","sashanavishka7@gmail.com","773929933"},
-                {"Sashan Avishka","CT/22/026","BICT","sashanavishka7@gmail.com","773929933"},
-                {"Sashan Avishka","CT/22/026","BICT","sashanavishka7@gmail.com","773929933"},
-                {"Sashan Avishka","CT/22/026","BICT","sashanavishka7@gmail.com","773929933"},
-                {"Sashan Avishka","CT/22/026","BICT","sashanavishka7@gmail.com","773929933"},
-                {"Sashan Avishka","CT/22/026","BICT","sashanavishka7@gmail.com","773929933"},
-                {"Sashan Avishka","CT/22/026","BICT","sashanavishka7@gmail.com","773929933"},
-                {"Sashan Avishka","CT/22/026","BICT","sashanavishka7@gmail.com","773929933"},
-                {"Sashan Avishka","CT/22/026","BICT","sashanavishka7@gmail.com","773929933"},
-                {"Sashan Avishka","CT/22/026","BICT","sashanavishka7@gmail.com","773929933"},
-                {"Sashan Avishka","CT/22/026","BICT","sashanavishka7@gmail.com","773929933"},
-                {"Sashan Avishka","CT/22/026","BICT","sashanavishka7@gmail.com","773929933"},
-                {"Sashan Avishka","CT/22/026","BICT","sashanavishka7@gmail.com","773929933"},
-                {"Sashan Avishka","CT/22/026","BICT","sashanavishka7@gmail.com","773929933"},
-                {"Sashan Avishka","CT/22/026","BICT","sashanavishka7@gmail.com","773929933"},
-                {"Sashan Avishka","CT/22/026","BICT","sashanavishka7@gmail.com","773929933"},
-                {"Sashan Avishka","CT/22/026","BICT","sashanavishka7@gmail.com","773929933"},
-                {"Sashan Avishka","CT/22/026","BICT","sashanavishka7@gmail.com","773929933"},
-                {"Sashan Avishka","CT/22/026","BICT","sashanavishka7@gmail.com","773929933"}
+        String[] StColumns = {"Full Name", "Student ID", "Degree", "Email", "Mobile Number"};
+        Object[][] Stdata = {
+                {"Sashan Avishka", "CT/22/026", "BICT", "sashanavishka7@gmail.com", "773929933"},
+                {"Sashan Avishka", "CT/22/026", "BICT", "sashanavishka7@gmail.com", "773929933"},
+                {"Sashan Avishka", "CT/22/026", "BICT", "sashanavishka7@gmail.com", "773929933"},
+                {"Sashan Avishka", "CT/22/026", "BICT", "sashanavishka7@gmail.com", "773929933"},
+                {"Sashan Avishka", "CT/22/026", "BICT", "sashanavishka7@gmail.com", "773929933"},
+                {"Sashan Avishka", "CT/22/026", "BICT", "sashanavishka7@gmail.com", "773929933"},
+                {"Sashan Avishka", "CT/22/026", "BICT", "sashanavishka7@gmail.com", "773929933"},
+                {"Sashan Avishka", "CT/22/026", "BICT", "sashanavishka7@gmail.com", "773929933"},
+                {"Sashan Avishka", "CT/22/026", "BICT", "sashanavishka7@gmail.com", "773929933"},
+                {"Sashan Avishka", "CT/22/026", "BICT", "sashanavishka7@gmail.com", "773929933"},
+                {"Sashan Avishka", "CT/22/026", "BICT", "sashanavishka7@gmail.com", "773929933"},
+                {"Sashan Avishka", "CT/22/026", "BICT", "sashanavishka7@gmail.com", "773929933"},
+                {"Sashan Avishka", "CT/22/026", "BICT", "sashanavishka7@gmail.com", "773929933"},
+                {"Sashan Avishka", "CT/22/026", "BICT", "sashanavishka7@gmail.com", "773929933"},
+                {"Sashan Avishka", "CT/22/026", "BICT", "sashanavishka7@gmail.com", "773929933"},
+                {"Sashan Avishka", "CT/22/026", "BICT", "sashanavishka7@gmail.com", "773929933"},
+                {"Sashan Avishka", "CT/22/026", "BICT", "sashanavishka7@gmail.com", "773929933"},
+                {"Sashan Avishka", "CT/22/026", "BICT", "sashanavishka7@gmail.com", "773929933"},
+                {"Sashan Avishka", "CT/22/026", "BICT", "sashanavishka7@gmail.com", "773929933"},
+                {"Sashan Avishka", "CT/22/026", "BICT", "sashanavishka7@gmail.com", "773929933"},
+                {"Sashan Avishka", "CT/22/026", "BICT", "sashanavishka7@gmail.com", "773929933"}
         };
-        DefaultTableModel model = new DefaultTableModel(Stdata,StColumns);
+        DefaultTableModel model = new DefaultTableModel(Stdata, StColumns);
         JTable StudentTable = new JTable(model);
-        StudentTable.setFont(new Font("SansSerif", Font.BOLD,12));
+        StudentTable.setFont(new Font("SansSerif", Font.BOLD, 12));
         StudentTable.setForeground(Color.DARK_GRAY);
-        StudentTable.getTableHeader().setFont(new Font("SansSerif",Font.BOLD,18));
+        StudentTable.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 18));
         StudentTable.getTableHeader().setForeground(Active);
         StudentTable.setRowHeight(40);
-        StudentTable.getTableHeader().setPreferredSize(new java.awt.Dimension(0,40));
+        StudentTable.getTableHeader().setPreferredSize(new java.awt.Dimension(0, 40));
         StudentTable.setGridColor(Active);
         StudentTable.setShowGrid(true);
 
@@ -100,7 +99,7 @@ public class StudentPanel extends JPanel {
         StScol.setBorder(new LineBorder(Active));
 
         JPanel TablePanel = new JPanel(new BorderLayout());
-        TablePanel.setBorder(new EmptyBorder(10,30,10,30));
+        TablePanel.setBorder(new EmptyBorder(10, 30, 10, 30));
         TablePanel.add(StScol);
         add(Box.createVerticalStrut(20));
         add(TablePanel);
@@ -108,10 +107,10 @@ public class StudentPanel extends JPanel {
         JButton SaveBtn = new JButton("Save Changes");
         SaveBtn.setBackground(Active);
         SaveBtn.setForeground(Color.WHITE);
-        SaveBtn.setFont(new Font("SansSerif", Font.BOLD,20));
+        SaveBtn.setFont(new Font("SansSerif", Font.BOLD, 20));
 
         JPanel SaveBtnPanel = new JPanel();
-        SaveBtnPanel.setLayout(new FlowLayout(FlowLayout.CENTER,150,20));
+        SaveBtnPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 150, 20));
         SaveBtnPanel.setOpaque(false);
 
 
@@ -125,12 +124,11 @@ public class StudentPanel extends JPanel {
 
             deleteBtn.setBackground(Active);
 
-            if(Selected != -1) {
-                JOptionPane.showMessageDialog(null,"Are you sure.!");
+            if (Selected != -1) {
+                JOptionPane.showMessageDialog(null, "Are you sure.!");
                 model.removeRow(Selected);
-            }
-            else{
-                JOptionPane.showMessageDialog(null,"Please Select a Student First !");
+            } else {
+                JOptionPane.showMessageDialog(null, "Please Select a Student First !");
             }
             deleteBtn.setBackground(Color.WHITE);
         });
@@ -144,9 +142,9 @@ public class StudentPanel extends JPanel {
 
         JDialog dialog = new JDialog();
         dialog.setTitle("Add Student");
-        dialog.setSize(400,300);
+        dialog.setSize(400, 300);
         dialog.setLocationRelativeTo(null);
-        dialog.setLayout(new BorderLayout(10,10));
+        dialog.setLayout(new BorderLayout(10, 10));
         dialog.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
         dialog.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
@@ -155,8 +153,8 @@ public class StudentPanel extends JPanel {
         });
 
 
-        JPanel Form = new JPanel(new GridLayout(5,2,5,5));
-        Form.setBorder(new EmptyBorder(20,40,20,40));
+        JPanel Form = new JPanel(new GridLayout(5, 2, 5, 5));
+        Form.setBorder(new EmptyBorder(20, 40, 20, 40));
 
         Form.add(new JLabel("Full Name : "));
         Form.add(name);
@@ -169,17 +167,17 @@ public class StudentPanel extends JPanel {
         Form.add(new JLabel("Mobile Number : "));
         Form.add(mobile);
 
-        dialog.add(Form,BorderLayout.CENTER);
+        dialog.add(Form, BorderLayout.CENTER);
 
         JButton save = new JButton("save");
         JPanel saveP = new JPanel();
         saveP.setLayout(new FlowLayout(FlowLayout.CENTER));
         saveP.add(save);
-        dialog.add(saveP,BorderLayout.SOUTH);
+        dialog.add(saveP, BorderLayout.SOUTH);
 
         save.addActionListener(e -> {
 
-            if(name.getText().trim().isEmpty() ||
+            if (name.getText().trim().isEmpty() ||
                     id.getText().trim().isEmpty() ||
                     degree.getText().trim().isEmpty() ||
                     email.getText().trim().isEmpty() ||
@@ -221,9 +219,9 @@ public class StudentPanel extends JPanel {
 
         JDialog EditDialog = new JDialog();
         EditDialog.setTitle("Update Student");
-        EditDialog.setSize(400,300);
+        EditDialog.setSize(400, 300);
         EditDialog.setLocationRelativeTo(null);
-        EditDialog.setLayout(new BorderLayout(10,10));
+        EditDialog.setLayout(new BorderLayout(10, 10));
         EditDialog.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
         EditDialog.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
@@ -232,9 +230,8 @@ public class StudentPanel extends JPanel {
         });
 
 
-
-        JPanel EditForm = new JPanel(new GridLayout(5,2,5,5));
-        EditForm.setBorder(new EmptyBorder(20,40,20,40));
+        JPanel EditForm = new JPanel(new GridLayout(5, 2, 5, 5));
+        EditForm.setBorder(new EmptyBorder(20, 40, 20, 40));
 
         EditForm.add(new JLabel("Full Name : "));
         EditForm.add(Editname);
@@ -247,13 +244,13 @@ public class StudentPanel extends JPanel {
         EditForm.add(new JLabel("Mobile : "));
         EditForm.add(Editmobile);
 
-        EditDialog.add(EditForm,BorderLayout.CENTER);
+        EditDialog.add(EditForm, BorderLayout.CENTER);
 
         JButton Update = new JButton("Update");
         JPanel UpdateP = new JPanel();
         UpdateP.setLayout(new FlowLayout(FlowLayout.CENTER));
         UpdateP.add(Update);
-        EditDialog.add(UpdateP,BorderLayout.SOUTH);
+        EditDialog.add(UpdateP, BorderLayout.SOUTH);
 
         final int[] editingRow = {-1};
 
@@ -262,17 +259,17 @@ public class StudentPanel extends JPanel {
 
             editBtn.setBackground(Active);
 
-            if(Selected == -1){
-                JOptionPane.showMessageDialog(this,"Please Select a Sudent First.");
+            if (Selected == -1) {
+                JOptionPane.showMessageDialog(this, "Please Select a Sudent First.");
                 editBtn.setBackground(Color.WHITE);
                 return;
             }
 
-            Editname.setText(StudentTable.getValueAt(Selected,0).toString());
-            Editid.setText(StudentTable.getValueAt(Selected,1).toString());
-            Editdegree.setText(StudentTable.getValueAt(Selected,2).toString());
-            Editemail.setText(StudentTable.getValueAt(Selected,3).toString());
-            Editmobile.setText(StudentTable.getValueAt(Selected,4).toString());
+            Editname.setText(StudentTable.getValueAt(Selected, 0).toString());
+            Editid.setText(StudentTable.getValueAt(Selected, 1).toString());
+            Editdegree.setText(StudentTable.getValueAt(Selected, 2).toString());
+            Editemail.setText(StudentTable.getValueAt(Selected, 3).toString());
+            Editmobile.setText(StudentTable.getValueAt(Selected, 4).toString());
 
             editingRow[0] = Selected;
             EditDialog.setVisible(true);
@@ -280,12 +277,12 @@ public class StudentPanel extends JPanel {
 
         Update.addActionListener(e -> {
 
-            if(editingRow[0] != -1){
-                model.setValueAt(Editname.getText(),editingRow[0],0);
-                model.setValueAt(Editid.getText(),editingRow[0],1);
-                model.setValueAt(Editdegree.getText(),editingRow[0],2);
-                model.setValueAt(Editemail.getText(),editingRow[0],3);
-                model.setValueAt(Editmobile.getText(),editingRow[0],4);
+            if (editingRow[0] != -1) {
+                model.setValueAt(Editname.getText(), editingRow[0], 0);
+                model.setValueAt(Editid.getText(), editingRow[0], 1);
+                model.setValueAt(Editdegree.getText(), editingRow[0], 2);
+                model.setValueAt(Editemail.getText(), editingRow[0], 3);
+                model.setValueAt(Editmobile.getText(), editingRow[0], 4);
             }
 
             EditDialog.dispose();

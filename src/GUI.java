@@ -122,6 +122,8 @@ public class GUI extends JFrame {
     private void switchCenterPanel(JPanel newPanel) {
         if (currentCenterPanel != null) {
             remove(currentCenterPanel);
+
+
         }
         currentCenterPanel = newPanel;
         add(currentCenterPanel, BorderLayout.CENTER);

@@ -261,7 +261,7 @@ public class LoginFrame extends JFrame {
 
         //Sign In button — placed right below the 3 role buttons
 
-        JButton signInButton1 = new JButton("Sign In");
+        RoundedButton signInButton1 = new RoundedButton("Sign In", 35);
         signInButton1.setBackground(activeColor);
         signInButton1.setBackground(purple);
         signInButton1.setForeground(Color.WHITE);
@@ -476,9 +476,6 @@ public class LoginFrame extends JFrame {
         Button_Panel.add(lecturer_button);
 
         //Sign up Button
-
-        JButton signUpButton = new JButton("Sign Up");
-
         RoundedButton signUpButton3 = new RoundedButton("Sign Up",30);
         signUpButton3.setBackground(purple);
         signUpButton3.setForeground(Color.WHITE);

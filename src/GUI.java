@@ -114,6 +114,11 @@ public class GUI extends JFrame {
         LsidePanel.add(ExitButton);
         LsidePanel.add(Box.createVerticalStrut(20));
 
+        ExitButton.addActionListener(e ->{
+            new LoginFrame();
+            dispose();
+        });
+
 // create right side panel (Students shown by default)
         switchCenterPanel(new StudentPanel());
     }

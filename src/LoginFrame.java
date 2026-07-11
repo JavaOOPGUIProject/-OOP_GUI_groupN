@@ -247,35 +247,11 @@ public class LoginFrame extends JFrame {
         Button_Panel.add(lecturer_button);
 
 
-        admin_button.addActionListener(e -> {
-            selectedRole = "Admin";
-            selectRoleButton(
-                    admin_button,
-                    admin_button,
-                    student_button,
-                    lecturer_button
-            );
-        });
+        admin_button.addActionListener(e -> selectedRole = "Admin");
 
-        student_button.addActionListener(e -> {
-            selectedRole = "Student";
-            selectRoleButton(
-                    student_button,
-                    admin_button,
-                    student_button,
-                    lecturer_button
-            );
-        });
+        student_button.addActionListener(e -> selectedRole = "Student");
 
-        lecturer_button.addActionListener(e -> {
-            selectedRole = "Lecturer";
-            selectRoleButton(
-                    lecturer_button,
-                    admin_button,
-                    student_button,
-                    lecturer_button
-            );
-        });
+        lecturer_button.addActionListener(e -> selectedRole = "Lecturer");
 
 
 
@@ -314,22 +290,7 @@ public class LoginFrame extends JFrame {
 
         signInButton2.addActionListener(e -> {
 
-            if (selectedRole.equals("Student")) {
-                new Student();   // Student page
 
-            } else if (selectedRole.equals("Admin")) {
-                new AdminDashboard();   // Admin page
-
-            } else if (selectedRole.equals("Lecturer")) {
-                new LecturerDashboard(); // Lecturer page
-
-            } else {
-                JOptionPane.showMessageDialog(this,
-                        "Please select a role!");
-                return;
-            }
-
-            dispose();
         });
 
         return panel;

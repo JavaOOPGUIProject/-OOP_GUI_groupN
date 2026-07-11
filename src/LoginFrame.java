@@ -5,6 +5,9 @@ import java.awt.event.MouseEvent;
 
 public class LoginFrame extends JFrame {
 
+    //see the user selectrole
+    private String selectedRole = "";
+
     // Layouts
     CardLayout cardLayout;
     JPanel formPanel;
@@ -14,8 +17,16 @@ public class LoginFrame extends JFrame {
     JLabel signUpTab;
 
 
+<<<<<<< HEAD
     public Color activeColor = new Color(150,100,100);
     public Color inactiveColor = Color.GRAY;
+=======
+    Color purple = new Color(150,100,100);
+    Color activeColor = purple;
+    Color inactiveColor = Color.GRAY;
+>>>>>>> origin/main
+
+
 
     public LoginFrame() {
 
@@ -26,17 +37,38 @@ public class LoginFrame extends JFrame {
 
         // ----------------------- LEFT PANEL ------------------------------------------------------------------
         JPanel leftpanel = new JPanel();
+<<<<<<< HEAD
         leftpanel.setBackground(activeColor);
+=======
+        leftpanel.setBackground(purple);
+>>>>>>> origin/main
         leftpanel.setPreferredSize(new Dimension(750, 600));
         leftpanel.setLayout(new BoxLayout(leftpanel, BoxLayout.Y_AXIS));
 
-        leftpanel.add(Box.createVerticalStrut(400));
+        leftpanel.add(Box.createVerticalStrut(280));
+
+        //graduation cap symbol
+        JLabel capIcon = new JLabel("🎓");
+        capIcon.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 150));
+        capIcon.setForeground(Color.WHITE);
+        capIcon.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        leftpanel.add(capIcon);
+        leftpanel.add(Box.createVerticalStrut(30));
 
         JLabel title = new JLabel("Faculty Management");
         JLabel title2 = new JLabel("System");
 
+<<<<<<< HEAD
         title.setFont(new Font("SansSerif", Font.BOLD, 50));
         title2.setFont(new Font("SansSerif", Font.BOLD, 50));
+=======
+        title.setForeground(Color.white);
+        title2.setForeground(Color.white);
+
+        title.setFont(new Font("Arial", Font.BOLD, 50));
+        title2.setFont(new Font("Arial", Font.BOLD, 50));
+>>>>>>> origin/main
 
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
         title2.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -44,13 +76,17 @@ public class LoginFrame extends JFrame {
         leftpanel.add(title);
         leftpanel.add(title2);
 
-        leftpanel.add(Box.createVerticalStrut(250));
+        leftpanel.add(Box.createVerticalStrut(70));
 
-        JLabel bottom_Title01 = new JLabel("Faculty OF Computing and Technology");
+
+        JLabel bottom_Title01 = new JLabel("Faculty of Computing & Technology");
         JLabel bottom_Title02 = new JLabel("Manage your academic journey");
 
         bottom_Title01.setFont(new Font("Arial", Font.BOLD, 20));
         bottom_Title02.setFont(new Font("Arial", Font.PLAIN, 18));
+
+        bottom_Title01.setForeground(Color.WHITE);
+        bottom_Title02.setForeground(Color.WHITE);
 
         bottom_Title01.setAlignmentX(Component.CENTER_ALIGNMENT);
         bottom_Title02.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -127,8 +163,13 @@ public class LoginFrame extends JFrame {
         //Username
         JLabel username = new JLabel("Username");
         username.setFont(new Font("Arial", Font.BOLD, 35));
+<<<<<<< HEAD
         username.setForeground (activeColor);
+=======
+        username.setForeground(purple);
+>>>>>>> origin/main
         username.setAlignmentX(Component.LEFT_ALIGNMENT);
+
 
         //Username_Field
         JTextField userField = new JTextField();
@@ -136,11 +177,17 @@ public class LoginFrame extends JFrame {
         userField.setPreferredSize(new Dimension(500, 40));
         userField.setAlignmentX(Component.LEFT_ALIGNMENT);
         userField.setFont(new Font("Arial", Font.PLAIN, 30));
+        userField.setOpaque(false);
+        userField.setBorder(new RoundedBorder(purple, 25, 3));
 
         //Password
         JLabel password = new JLabel("Password");
         password.setFont(new Font("Arial", Font.BOLD, 35));
+<<<<<<< HEAD
         password.setForeground(activeColor);
+=======
+        password.setForeground(purple);
+>>>>>>> origin/main
         password.setAlignmentX(Component.LEFT_ALIGNMENT);
 
         //Password_Field
@@ -149,11 +196,17 @@ public class LoginFrame extends JFrame {
         password_Field.setPreferredSize(new Dimension(500, 40));
         password_Field.setAlignmentX(Component.LEFT_ALIGNMENT);
         password_Field.setFont(new Font("Arial", Font.PLAIN, 30));
+        password_Field.setOpaque(false);
+        password_Field.setBorder(new RoundedBorder(purple, 25, 3));
 
         //Role_text
         JLabel role = new JLabel("Role");
         role.setFont(new Font("Arial", Font.BOLD, 35));
+<<<<<<< HEAD
         role.setForeground(activeColor);
+=======
+        role.setForeground(purple);
+>>>>>>> origin/main
         role.setAlignmentX(Component.LEFT_ALIGNMENT);
 
         //Button_Panel (role buttons + sign in button together)
@@ -162,33 +215,85 @@ public class LoginFrame extends JFrame {
         Button_Panel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
         //Admin_button
-        JButton admin_button = new JButton("Admin");
+        RoundedButton admin_button = new RoundedButton("Admin",25);
         admin_button.setPreferredSize(new Dimension(150, 40));
+<<<<<<< HEAD
         admin_button.setBackground(activeColor);
+=======
+        admin_button.setBackground(purple);
+>>>>>>> origin/main
         admin_button.setForeground(Color.WHITE);
 
         //Student_button
-        JButton student_button = new JButton("Student");
+        RoundedButton student_button = new RoundedButton("Student",25);
         student_button.setPreferredSize(new Dimension(150, 40));
+<<<<<<< HEAD
         student_button.setBackground(activeColor);
+=======
+        student_button.setBackground(purple);
+>>>>>>> origin/main
         student_button.setForeground(Color.WHITE);
 
         //Lecturer_button
-        JButton lecturer_button = new JButton("Lecturer");
+        RoundedButton lecturer_button = new RoundedButton("Lecturer",25);
         lecturer_button.setPreferredSize(new Dimension(150, 40));
+<<<<<<< HEAD
         lecturer_button.setBackground(activeColor);
+=======
+        lecturer_button.setBackground(purple);
+>>>>>>> origin/main
         lecturer_button.setForeground(Color.WHITE);
 
         Button_Panel.add(admin_button);
         Button_Panel.add(student_button);
         Button_Panel.add(lecturer_button);
 
+
+        admin_button.addActionListener(e -> {
+            selectedRole = "Admin";
+            selectRoleButton(
+                    admin_button,
+                    admin_button,
+                    student_button,
+                    lecturer_button
+            );
+        });
+
+        student_button.addActionListener(e -> {
+            selectedRole = "Student";
+            selectRoleButton(
+                    student_button,
+                    admin_button,
+                    student_button,
+                    lecturer_button
+            );
+        });
+
+        lecturer_button.addActionListener(e -> {
+            selectedRole = "Lecturer";
+            selectRoleButton(
+                    lecturer_button,
+                    admin_button,
+                    student_button,
+                    lecturer_button
+            );
+        });
+
+
+
         //Sign In button — placed right below the 3 role buttons
+<<<<<<< HEAD
         JButton signInButton = new JButton("Sign In");
         signInButton.setBackground(activeColor);
+=======
+        RoundedButton signInButton = new RoundedButton("Sign In",30);
+        signInButton.setBackground(purple);
+>>>>>>> origin/main
         signInButton.setForeground(Color.WHITE);
         signInButton.setAlignmentX(Component.LEFT_ALIGNMENT);
-        signInButton.setMaximumSize(new Dimension(500, 45));
+        signInButton.setPreferredSize(new Dimension(500, 70));
+        signInButton.setMaximumSize(new Dimension(500, 70));
+        signInButton.setFont(new Font("Arial", Font.BOLD, 28));
 
         //Adding all components to the panel
         panel.add(username);
@@ -212,13 +317,43 @@ public class LoginFrame extends JFrame {
         panel.add(Box.createVerticalGlue());
 
         signInButton.addActionListener(e -> {
-            new DashboardFrame();
+
+            if (selectedRole.equals("Student")) {
+                new Student();   // Student page
+
+            } else if (selectedRole.equals("Admin")) {
+                new AdminDashboard();   // Admin page
+
+            } else if (selectedRole.equals("Lecturer")) {
+                new LecturerDashboard(); // Lecturer page
+
+            } else {
+                JOptionPane.showMessageDialog(this,
+                        "Please select a role!");
+                return;
+            }
+
             dispose();
         });
 
         return panel;
     }
+    private void selectRoleButton(
+            RoundedButton selected,
+            RoundedButton admin_button,
+            RoundedButton student_button,
+            RoundedButton lecturer_button) {
 
+        admin_button.setBackground(purple);
+        student_button.setBackground(purple);
+        lecturer_button.setBackground(purple);
+
+        admin_button.setForeground(Color.WHITE);
+        student_button.setForeground(Color.WHITE);
+        lecturer_button.setForeground(Color.WHITE);
+
+        selected.setBackground(new Color(220,150,150));
+    }
     //SignUp form Function
     private JPanel createSignUpForm() {
 
@@ -231,7 +366,11 @@ public class LoginFrame extends JFrame {
         //Username
         JLabel username = new JLabel("Username");
         username.setFont(new Font("Arial", Font.BOLD, 35));
+<<<<<<< HEAD
         username.setForeground(activeColor);
+=======
+        username.setForeground(purple);
+>>>>>>> origin/main
         username.setAlignmentX(Component.LEFT_ALIGNMENT);
 
         //Username_Field
@@ -240,11 +379,18 @@ public class LoginFrame extends JFrame {
         userField.setPreferredSize(new Dimension(500, 40));
         userField.setAlignmentX(Component.LEFT_ALIGNMENT);
         userField.setFont(new Font("Arial", Font.PLAIN, 30));
+        userField.setOpaque(false);
+        userField.setBorder(new RoundedBorder(purple, 30, 3));
+
 
         //Password
         JLabel password = new JLabel("Password");
         password.setFont(new Font("Arial", Font.BOLD, 35));
+<<<<<<< HEAD
         password.setForeground(activeColor);
+=======
+        password.setForeground(purple);
+>>>>>>> origin/main
         password.setAlignmentX(Component.LEFT_ALIGNMENT);
 
         //Password_Field
@@ -253,12 +399,19 @@ public class LoginFrame extends JFrame {
         password_Field.setPreferredSize(new Dimension(500, 40));
         password_Field.setAlignmentX(Component.LEFT_ALIGNMENT);
         password_Field.setFont(new Font("Arial", Font.PLAIN, 30));
+        password_Field.setOpaque(false);
+        password_Field.setBorder(new RoundedBorder(purple, 30, 3));
 
         //Confirm Password
         JLabel confirm = new JLabel("Confirm Password");
         confirm.setFont(new Font("Arial", Font.BOLD, 35));
+<<<<<<< HEAD
         confirm.setForeground(activeColor);
+=======
+        confirm.setForeground(purple);
+>>>>>>> origin/main
         confirm.setAlignmentX(Component.LEFT_ALIGNMENT);
+
 
         //Confirm_Password_Field
         JTextField confirmField = new JTextField();
@@ -266,11 +419,18 @@ public class LoginFrame extends JFrame {
         confirmField.setPreferredSize(new Dimension(500, 40));
         confirmField.setAlignmentX(Component.LEFT_ALIGNMENT);
         confirmField.setFont(new Font("Arial", Font.PLAIN, 30));
+        confirmField.setOpaque(false);
+        confirmField.setBorder(new RoundedBorder(purple, 30, 3));
+
 
         //Role_text
         JLabel role = new JLabel("Role");
         role.setFont(new Font("Arial", Font.BOLD, 35));
+<<<<<<< HEAD
         role.setForeground(activeColor);
+=======
+        role.setForeground(purple);
+>>>>>>> origin/main
         role.setAlignmentX(Component.LEFT_ALIGNMENT);
 
         //Button_Panel
@@ -278,19 +438,31 @@ public class LoginFrame extends JFrame {
         Button_Panel.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 0));
         Button_Panel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        JButton admin_button = new JButton("Admin");
+        RoundedButton admin_button = new RoundedButton("Admin",25);
         admin_button.setPreferredSize(new Dimension(150, 40));
+<<<<<<< HEAD
         admin_button.setBackground(activeColor);
+=======
+        admin_button.setBackground(purple);
+>>>>>>> origin/main
         admin_button.setForeground(Color.WHITE);
 
-        JButton student_button = new JButton("Student");
+        RoundedButton student_button = new RoundedButton("Student",25);
         student_button.setPreferredSize(new Dimension(150, 40));
+<<<<<<< HEAD
         student_button.setBackground(activeColor);
+=======
+        student_button.setBackground(purple);
+>>>>>>> origin/main
         student_button.setForeground(Color.WHITE);
 
-        JButton lecturer_button = new JButton("Lecturer");
+        RoundedButton lecturer_button = new RoundedButton("Lecturer",25);
         lecturer_button.setPreferredSize(new Dimension(150, 40));
+<<<<<<< HEAD
         lecturer_button.setBackground(activeColor);
+=======
+        lecturer_button.setBackground(purple);
+>>>>>>> origin/main
         lecturer_button.setForeground(Color.WHITE);
 
         Button_Panel.add(admin_button);
@@ -298,11 +470,19 @@ public class LoginFrame extends JFrame {
         Button_Panel.add(lecturer_button);
 
         //Sign up Button
+<<<<<<< HEAD
         JButton signUpButton = new JButton("Sign Up");
         signUpButton.setBackground(activeColor);
         signUpButton.setForeground(activeColor);
+=======
+        RoundedButton signUpButton = new RoundedButton("Sign Up",30);
+        signUpButton.setBackground(purple);
+        signUpButton.setForeground(Color.WHITE);
+>>>>>>> origin/main
         signUpButton.setAlignmentX(Component.LEFT_ALIGNMENT);
-        signUpButton.setMaximumSize(new Dimension(500, 45));
+        signUpButton.setPreferredSize(new Dimension(500, 70));
+        signUpButton.setMaximumSize(new Dimension(500, 70));
+        signUpButton.setFont(new Font("Arial", Font.BOLD, 28));
 
         //Adding_Components
         panel.add(username);
@@ -329,7 +509,7 @@ public class LoginFrame extends JFrame {
         panel.add(signUpButton);
 
         signUpButton.addActionListener(e -> {
-            new DashboardFrame();
+            new Student();
             dispose();
         });
 
@@ -338,6 +518,16 @@ public class LoginFrame extends JFrame {
 
     private void setActiveTab(JLabel label, boolean active) {
         label.setForeground(active ? activeColor : inactiveColor);
+
+        if (active) {
+            label.setBorder(BorderFactory.createMatteBorder(
+                    0, 0, 4, 0, purple
+            ));
+        } else {
+            label.setBorder(BorderFactory.createEmptyBorder(
+                    0, 0, 4, 0
+            ));
+        }
     }
 
 

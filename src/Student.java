@@ -1,13 +1,13 @@
 import javax.swing.*;
-import javax.swing.border.*;
 import java.awt.*;
 
-public class DashboardFrame extends JFrame {
+public class Student extends JFrame {
 
+    Color purple = new Color(150, 100, 100);
     CardLayout cardLayout;
     JPanel contentPanel;
 
-    public DashboardFrame() {
+    public Student() {
 
         setTitle("DashboardFrame");
         setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -17,7 +17,11 @@ public class DashboardFrame extends JFrame {
         //Left Panel
         JPanel leftPanel = new JPanel();
         leftPanel.setPreferredSize(new Dimension(500, getHeight()));
+<<<<<<< HEAD:src/DashboardFrame.java
         leftPanel.setBackground(new Color(150,100,100));
+=======
+        leftPanel.setBackground(purple);
+>>>>>>> origin/main:src/Student.java
         leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
 
         leftPanel.add(Box.createVerticalStrut(40));
@@ -31,11 +35,25 @@ public class DashboardFrame extends JFrame {
 
         leftPanel.add(Box.createVerticalStrut(60));
 
-        JButton profileButton  = new JButton("Profile Details");
-        JButton timetableButton = new JButton("Time Table");
-        JButton courseButton   = new JButton("Course Enrolled");
+        RoundedButton profileButton =
+                new RoundedButton("Profile Details", 20);
 
-        Dimension buttonSize = new Dimension(450, 40);
+        RoundedButton timetableButton =
+                new RoundedButton("Time Table", 20);
+
+        RoundedButton courseButton =
+                new RoundedButton("Course Enrolled", 20);
+
+        profileButton.setBackground(Color.WHITE);
+        profileButton.setForeground(purple);
+
+        timetableButton.setBackground(Color.WHITE);
+        timetableButton.setForeground(Color.GRAY);
+
+        courseButton.setBackground(Color.WHITE);
+        courseButton.setForeground(Color.GRAY);
+
+        Dimension buttonSize = new Dimension(420, 65);
 
         profileButton.setMaximumSize(buttonSize);
         timetableButton.setMaximumSize(buttonSize);
@@ -66,11 +84,16 @@ public class DashboardFrame extends JFrame {
 
         //Profile Panel
         JPanel profilePanel = new JPanel();
+        profilePanel.setBackground(Color.WHITE);
         profilePanel.setLayout(new BoxLayout(profilePanel, BoxLayout.Y_AXIS));
 
         JLabel title = new JLabel("Profile Details");
         title.setFont(new Font("Arial", Font.BOLD, 35));
+<<<<<<< HEAD:src/DashboardFrame.java
         title.setForeground(new Color(150,100,100));
+=======
+        title.setForeground(purple);
+>>>>>>> origin/main:src/Student.java
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         profilePanel.add(Box.createVerticalStrut(50));
@@ -88,14 +111,20 @@ public class DashboardFrame extends JFrame {
         profilePanel.add(createRow("Mobile Number"));
         profilePanel.add(Box.createVerticalStrut(60));
 
-        JButton saveButton = new JButton("Save Changes");
+        RoundedButton saveButton = new RoundedButton("Save Changes", 20);
         saveButton.setFont(new Font("Arial", Font.BOLD, 22));
-        saveButton.setMaximumSize(new Dimension(550, 50));
-        saveButton.setMinimumSize(new Dimension(550, 50));
-        saveButton.setPreferredSize(new Dimension(550, 50));
+
+        saveButton.setMaximumSize(new Dimension(550, 65));
+        saveButton.setPreferredSize(new Dimension(550, 65));
+
         saveButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        saveButton.setBackground(purple);
         saveButton.setForeground(Color.WHITE);
+<<<<<<< HEAD:src/DashboardFrame.java
         saveButton.setBackground(new Color(150,100,100));
+=======
+>>>>>>> origin/main:src/Student.java
 
         profilePanel.add(saveButton);
 
@@ -118,18 +147,27 @@ public class DashboardFrame extends JFrame {
 
     private JPanel createRow(String text) {
         JPanel row = new JPanel();
+        row.setBackground(Color.WHITE);
         row.setLayout(new FlowLayout(FlowLayout.LEFT, 60, 0));
-        row.setMaximumSize(new Dimension(Integer.MAX_VALUE, 45));
-        row.setPreferredSize(new Dimension(800, 45));
+        row.setMaximumSize(new Dimension(Integer.MAX_VALUE, 65));
+        row.setPreferredSize(new Dimension(800, 65));
 
         JLabel label = new JLabel(text);
         label.setPreferredSize(new Dimension(180, 35));
         label.setFont(new Font("Arial", Font.BOLD, 25));
+<<<<<<< HEAD:src/DashboardFrame.java
         label.setForeground(new Color(150,100,100));
+=======
+        label.setForeground(purple);
+>>>>>>> origin/main:src/Student.java
 
         JTextField field = new JTextField();
-        field.setPreferredSize(new Dimension(500, 35));
+        field.setPreferredSize(new Dimension(500, 55));
         field.setFont(new Font("Arial", Font.PLAIN, 22));
+        field.setOpaque(false);
+        field.setBorder(new RoundedBorder(purple, 30, 3));
+
+
 
         row.add(label);
         row.add(field);

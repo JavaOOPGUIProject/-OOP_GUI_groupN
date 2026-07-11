@@ -1,10 +1,17 @@
-import ...
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 
 public class LoginFrame extends JFrame {
 
     //see the user selectrole
-    private MysqlxDatatypes.Scalar.String selectedRole = "";
-    private MysqlxDatatypes.Scalar.String singupRole = "";
+    private String selectedRole = "";
+    private String singupRole = "";
+
 
     // Layouts
     CardLayout cardLayout;
@@ -22,9 +29,9 @@ public class LoginFrame extends JFrame {
     //Create a database connection class
     public class DBConnection {
 
-        private static final MysqlxDatatypes.Scalar.String URL = "jdbc:mysql://localhost:3306/faculty_management_system";
-        private static final MysqlxDatatypes.Scalar.String USER = "root";
-        private static final MysqlxDatatypes.Scalar.String PASSWORD = "";
+        private static final String URL = "jdbc:mysql://localhost:3306/faculty_management_system";
+        private static final String USER = "root";
+        private static final String PASSWORD = "";
 
         public static Connection getConnection() {
             try {

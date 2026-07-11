@@ -2,11 +2,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 
 public class LoginFrame extends JFrame {
 
     //see the user selectrole
     private String selectedRole = "";
+    private String singupRole = "";
 
     // Layouts
     CardLayout cardLayout;
@@ -21,6 +25,22 @@ public class LoginFrame extends JFrame {
     Color activeColor = purple;
     Color inactiveColor = Color.GRAY;
 
+    //Create a database connection class
+    public class DBConnection {
+
+        private static final String URL = "jdbc:mysql://localhost:3306/faculty_management_system";
+        private static final String USER = "root";
+        private static final String PASSWORD = "";
+
+        public static Connection getConnection() {
+            try {
+                return DriverManager.getConnection(URL, USER, PASSWORD);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+    }
 
 
     public LoginFrame() {
@@ -433,8 +453,6 @@ public class LoginFrame extends JFrame {
         //Sign up Button
 
         JButton signUpButton = new JButton("Sign Up");
-        signUpButton.setBackground(activeColor);
-        signUpButton.setForeground(activeColor);
 
         RoundedButton signUpButton3 = new RoundedButton("Sign Up",30);
         signUpButton3.setBackground(purple);
@@ -468,10 +486,60 @@ public class LoginFrame extends JFrame {
         panel.add(Box.createVerticalStrut(10));
         panel.add(signUpButton3);
 
+        admin_button.addActionListener(e -> singupRole = "Admin");
+        student_button.addActionListener(e -> singupRole = "Student");
+        lecturer_button.addActionListener(e ->singupRole = "Lecturer");
+
+
         signUpButton3.addActionListener(e -> {
-            new Student();
-            dispose();
+            String urname = userField.getText();
+            String cpword = confirmField.getText();
+            String pword = password_Field.getText();
+
+            if(!pword.equals(cpword)){
+                JOptionPane.showMessageDialog(this, "Passwords do not match!");
+                return;
+            }
+
+            if (singupRole== null) {
+                JOptionPane.showMessageDialog(this, "Please select a role.");
+                return;
+            }
+
+            System.out.println("Username: " + urname);
+            System.out.println("Password: " + pword);
+            System.out.println("Role = '" + singupRole + "'");
+            try{
+                Connection con = DBConnection.getConnection();
+
+                System.out.println("Database: " + con.getCatalog());
+
+                String sql = "INSERT INTO login (Username, Password, Role) VALUES (?, ?, ?)";
+
+                PreparedStatement ps = con.prepareStatement(sql);
+
+                ps.setString(1, urname);
+                ps.setString(2, pword);
+                ps.setString(3, singupRole);
+
+                ps.executeUpdate();
+
+                JOptionPane.showMessageDialog(this, "Sign Up Successful!");
+
+                ps.close();
+                con.close();
+            }catch (Exception ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Database Error!");
+            }
         });
+
+
+
+//        signUpButton3.addActionListener(e -> {
+//            new Student();
+//            dispose();
+//        });
 
         return panel;
     }

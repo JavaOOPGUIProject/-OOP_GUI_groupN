@@ -9,7 +9,7 @@ public class Student extends JFrame {
 
     public Student() {
 
-        setTitle("DashboardFrame");
+        setTitle("Student Dashboard");
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout());

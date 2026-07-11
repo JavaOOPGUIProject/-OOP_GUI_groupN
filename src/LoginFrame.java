@@ -90,7 +90,7 @@ public class LoginFrame extends JFrame {
         leftpanel.add(Box.createVerticalStrut(70));
 
 
-        JLabel bottom_Title01 = new JLabel("Faculty of Computing & Technology");
+        JLabel bottom_Title01 = new JLabel("Faculty of Computing and Technology");
         JLabel bottom_Title02 = new JLabel("Manage your academic journey");
 
         bottom_Title01.setFont(new Font("Arial", Font.BOLD, 20));

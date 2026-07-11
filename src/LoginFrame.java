@@ -24,7 +24,6 @@ public class LoginFrame extends JFrame {
     Color purple = new Color(150,100,100);
     Color activeColor = purple;
     Color inactiveColor = Color.GRAY;
->>>>>>> origin/main
 
 
 
@@ -59,16 +58,15 @@ public class LoginFrame extends JFrame {
         JLabel title = new JLabel("Faculty Management");
         JLabel title2 = new JLabel("System");
 
-<<<<<<< HEAD
+
         title.setFont(new Font("SansSerif", Font.BOLD, 50));
         title2.setFont(new Font("SansSerif", Font.BOLD, 50));
-=======
         title.setForeground(Color.white);
         title2.setForeground(Color.white);
 
         title.setFont(new Font("Arial", Font.BOLD, 50));
         title2.setFont(new Font("Arial", Font.BOLD, 50));
->>>>>>> origin/main
+
 
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
         title2.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -163,11 +161,11 @@ public class LoginFrame extends JFrame {
         //Username
         JLabel username = new JLabel("Username");
         username.setFont(new Font("Arial", Font.BOLD, 35));
-<<<<<<< HEAD
+
         username.setForeground (activeColor);
-=======
+
         username.setForeground(purple);
->>>>>>> origin/main
+
         username.setAlignmentX(Component.LEFT_ALIGNMENT);
 
 
@@ -183,11 +181,10 @@ public class LoginFrame extends JFrame {
         //Password
         JLabel password = new JLabel("Password");
         password.setFont(new Font("Arial", Font.BOLD, 35));
-<<<<<<< HEAD
+
         password.setForeground(activeColor);
-=======
         password.setForeground(purple);
->>>>>>> origin/main
+
         password.setAlignmentX(Component.LEFT_ALIGNMENT);
 
         //Password_Field

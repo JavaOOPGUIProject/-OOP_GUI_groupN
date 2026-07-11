@@ -320,7 +320,7 @@ public class LoginFrame extends JFrame {
 
                     if (userRole.equals("Admin")) {
 
-                        new GUI().setVisible(true);
+                        new GUI(sUsername).setVisible(true);
 
                     } else if (userRole.equals("Student")) {
 

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="36ffec65-e08c-4c06-a8b7-e57feaba3d67" name="Changes" comment="Login page connect to database and create Lecturer file">
+    <list default="true" id="36ffec65-e08c-4c06-a8b7-e57feaba3d67" name="Changes" comment="Login page upadate">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/LoginFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LoginFrame.java" afterDir="false" />
@@ -165,7 +165,15 @@
       <option name="project" value="LOCAL" />
       <updated>1783792091935</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Login page upadate">
+      <option name="closed" value="true" />
+      <created>1783794858932</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1783794858932</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -187,6 +195,7 @@
     <MESSAGE value="Create data base connection with signup frame" />
     <MESSAGE value="update sign in page" />
     <MESSAGE value="Login page connect to database and create Lecturer file" />
-    <option name="LAST_COMMIT_MESSAGE" value="Login page connect to database and create Lecturer file" />
+    <MESSAGE value="Login page upadate" />
+    <option name="LAST_COMMIT_MESSAGE" value="Login page upadate" />
   </component>
 </project>

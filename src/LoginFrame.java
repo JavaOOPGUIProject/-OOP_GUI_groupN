@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class LoginFrame extends JFrame {
 
@@ -256,17 +257,18 @@ public class LoginFrame extends JFrame {
 
 
 
+
+
         //Sign In button — placed right below the 3 role buttons
 
         JButton signInButton1 = new JButton("Sign In");
         signInButton1.setBackground(activeColor);
-        RoundedButton signInButton2 = new RoundedButton("Sign In",30);
-        signInButton2.setBackground(purple);
-        signInButton2.setForeground(Color.WHITE);
-        signInButton2.setAlignmentX(Component.LEFT_ALIGNMENT);
-        signInButton2.setPreferredSize(new Dimension(500, 70));
-        signInButton2.setMaximumSize(new Dimension(500, 70));
-        signInButton2.setFont(new Font("Arial", Font.BOLD, 28));
+        signInButton1.setBackground(purple);
+        signInButton1.setForeground(Color.WHITE);
+        signInButton1.setAlignmentX(Component.LEFT_ALIGNMENT);
+        signInButton1.setPreferredSize(new Dimension(500, 70));
+        signInButton1.setMaximumSize(new Dimension(500, 70));
+        signInButton1.setFont(new Font("Arial", Font.BOLD, 28));
 
         //Adding all components to the panel
         panel.add(username);
@@ -285,11 +287,74 @@ public class LoginFrame extends JFrame {
         panel.add(Button_Panel);
 
         panel.add(Box.createVerticalStrut(20));
-        panel.add(signInButton2);
+        panel.add(signInButton1);
 
         panel.add(Box.createVerticalGlue());
 
-        signInButton2.addActionListener(e -> {
+        signInButton1.addActionListener(e -> {
+
+            System.out.println("Sign In button clicked");
+
+            String sUsername = userField.getText().trim();
+            String uPassword = password_Field.getText().trim();
+
+            try {
+                Connection con = DBConnection.getConnection();
+
+                String sql = "SELECT Role FROM login WHERE Username=? AND Password=?";
+
+                PreparedStatement ps = con.prepareStatement(sql);
+
+                ps.setString(1, sUsername);
+                ps.setString(2, uPassword);
+
+                ResultSet rs = ps.executeQuery();
+
+                if (rs.next()) {
+
+                    // Changed variable name from 'role' to 'userRole'
+                    String userRole = rs.getString("Role");
+
+                    JOptionPane.showMessageDialog(null, "Login Successful!");
+
+                    dispose();   // Close Login Window
+
+                    if (userRole.equals("Admin")) {
+
+                        new GUI().setVisible(true);
+
+                    } else if (userRole.equals("Student")) {
+
+                        new Student().setVisible(true);
+
+                    } else if (userRole.equals("Lecturer")) {
+
+                        new Lecturer().setVisible(true);
+
+                    } else {
+
+                        JOptionPane.showMessageDialog(null, "Unknown User Role!");
+
+                    }
+
+                } else {
+
+                    JOptionPane.showMessageDialog(null,
+                            "Invalid Username or Password!");
+
+                }
+
+                rs.close();
+                ps.close();
+                con.close();
+
+            } catch (Exception ex) {
+
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Database Error!");
+
+            }
+
         });
 
         return panel;
@@ -310,6 +375,7 @@ public class LoginFrame extends JFrame {
 
         selected.setBackground(new Color(220,150,150));
     }
+
     //SignUp form Function
     private JPanel createSignUpForm() {
 

@@ -16,11 +16,9 @@ public class LoginFrame extends JFrame {
     JLabel signInTab;
     JLabel signUpTab;
 
-
-<<<<<<< HEAD
     public Color activeColor = new Color(150,100,100);
     public Color inactiveColor = Color.GRAY;
-=======
+
     Color purple = new Color(150,100,100);
     Color activeColor = purple;
     Color inactiveColor = Color.GRAY;
@@ -36,11 +34,11 @@ public class LoginFrame extends JFrame {
 
         // ----------------------- LEFT PANEL ------------------------------------------------------------------
         JPanel leftpanel = new JPanel();
-<<<<<<< HEAD
+
         leftpanel.setBackground(activeColor);
-=======
+
         leftpanel.setBackground(purple);
->>>>>>> origin/main
+
         leftpanel.setPreferredSize(new Dimension(750, 600));
         leftpanel.setLayout(new BoxLayout(leftpanel, BoxLayout.Y_AXIS));
 

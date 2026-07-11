@@ -540,7 +540,6 @@ public class LoginFrame extends JFrame {
 //            new Student();
 //            dispose();
 //        });
-
         return panel;
     }
 

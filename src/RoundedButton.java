@@ -20,7 +20,9 @@ public class RoundedButton extends JButton {
 
     }
 
+    @Override
     protected void paintComponent(Graphics g) {
+
         Graphics2D g2 = (Graphics2D) g.create();
 
         g2.setRenderingHint(
@@ -28,16 +30,27 @@ public class RoundedButton extends JButton {
                 RenderingHints.VALUE_ANTIALIAS_ON
         );
 
-        if(getModel().isPressed()) {
+        if (getModel().isPressed()) {
             g2.setColor(getBackground().darker());
-        }else if(getModel().isRollover()) {
+        } else if (getModel().isRollover()) {
             g2.setColor(getBackground().brighter());
-        }else {
+        } else {
             g2.setColor(getBackground());
         }
-        g2.fillRoundRect(0, 0, getWidth(), getHeight(), radius, radius);
+
+        g2.fillRoundRect(
+                0,
+                0,
+                getWidth(),
+                getHeight(),
+                radius,
+                radius
+        );
 
         g2.dispose();
+
+        setBorder(BorderFactory.createEmptyBorder());
+
         super.paintComponent(g);
     }
 }

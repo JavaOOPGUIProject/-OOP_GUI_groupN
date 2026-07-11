@@ -37,7 +37,7 @@ public class GUI extends JFrame {
         String[] NavigateItems = {"Students","Lectures","courses","Departments","Degrees"};
         JButton[] NavButtons = new JButton[NavigateItems.length];
         for(int i = 0;i<NavigateItems.length;i++) {
-            JButton Navigate = new JButton(NavigateItems[i]);
+            RoundedButton Navigate = new RoundedButton(NavigateItems[i],18);
             Navigate.setForeground(Color.DARK_GRAY);
             Navigate.setBackground(Color.WHITE);
             Navigate.setPreferredSize(new Dimension(350, 55));

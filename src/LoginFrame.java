@@ -249,13 +249,20 @@ public class LoginFrame extends JFrame {
         Button_Panel.add(lecturer_button);
 
 
-        admin_button.addActionListener(e -> selectedRole = "Admin");
+        admin_button.addActionListener(e -> {
+            selectedRole = "Admin";
+            selectRoleButton(admin_button, admin_button, student_button, lecturer_button);
+        });
 
-        student_button.addActionListener(e -> selectedRole = "Student");
+        student_button.addActionListener(e -> {
+            selectedRole = "Student";
+            selectRoleButton(student_button, admin_button, student_button, lecturer_button);
+        });
 
-        lecturer_button.addActionListener(e -> selectedRole = "Lecturer");
-
-
+        lecturer_button.addActionListener(e -> {
+            selectedRole = "Lecturer";
+            selectRoleButton(lecturer_button, admin_button, student_button, lecturer_button);
+        });
 
 
 
@@ -373,6 +380,7 @@ public class LoginFrame extends JFrame {
         lecturer_button.setForeground(Color.WHITE);
 
         selected.setBackground(new Color(220,150,150));
+        selected.setForeground(Color.WHITE);
     }
 
     //SignUp form Function
@@ -508,9 +516,20 @@ public class LoginFrame extends JFrame {
         panel.add(Box.createVerticalStrut(10));
         panel.add(signUpButton3);
 
-        admin_button.addActionListener(e -> singupRole = "Admin");
-        student_button.addActionListener(e -> singupRole = "Student");
-        lecturer_button.addActionListener(e ->singupRole = "Lecturer");
+        admin_button.addActionListener(e -> {
+            singupRole = "Admin";
+            selectRoleButton(admin_button, admin_button, student_button, lecturer_button);
+        });
+
+        student_button.addActionListener(e -> {
+            singupRole = "Student";
+            selectRoleButton(student_button, admin_button, student_button, lecturer_button);
+        });
+
+        lecturer_button.addActionListener(e -> {
+            singupRole = "Lecturer";
+            selectRoleButton(lecturer_button, admin_button, student_button, lecturer_button);
+        });
 
 
         signUpButton3.addActionListener(e -> {

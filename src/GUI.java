@@ -35,30 +35,39 @@ public class GUI extends JFrame {
 //Add Navigations
 
         String[] NavigateItems = {"Students","Lectures","courses","Departments","Degrees"};
+        String[] iconFiles = {
+                "images/student.png",
+                "images/lecture.png",
+                "images/course.png",
+                "images/department.png",
+                "images/collage.png"
+        };
         JButton[] NavButtons = new JButton[NavigateItems.length];
         for(int i = 0;i<NavigateItems.length;i++) {
-            RoundedButton Navigate = new RoundedButton(NavigateItems[i],18);
-            Navigate.setForeground(Color.DARK_GRAY);
+            RoundedButton Navigate = new RoundedButton(NavigateItems[i],25);
+
+            ImageIcon icon = new ImageIcon(iconFiles[i]);
+            Image img = icon.getImage().getScaledInstance(28, 28, Image.SCALE_SMOOTH);
+
+            Navigate.setIcon(new ImageIcon(img));
+            Navigate.setHorizontalAlignment(SwingConstants.LEFT);
+            Navigate.setHorizontalTextPosition(SwingConstants.RIGHT);
+            Navigate.setIconTextGap(15);
+            Navigate.setForeground(Active);
             Navigate.setBackground(Color.WHITE);
             Navigate.setPreferredSize(new Dimension(350, 55));
             Navigate.setFont(new Font("SansSerif", Font.BOLD, 32));
             Navigate.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
-            if (NavigateItems[i].equals("Students")) {
-                Navigate.setForeground(Active);
-            }
-            else {
-                Navigate.setForeground(Color.DARK_GRAY);
-            }
+
 
             NavButtons[i] = Navigate;
 
             // On click: change only this button's font color, reset all others
             Navigate.addActionListener(e -> {
                 for (JButton btn : NavButtons) {
-                    btn.setForeground(Color.DARK_GRAY);
+                    btn.setForeground(Active);
                 }
-                Navigate.setForeground(Active );
             });
 
             JPanel NavigateWrapper = new JPanel(new FlowLayout(FlowLayout.CENTER,8,0));

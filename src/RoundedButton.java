@@ -12,7 +12,6 @@ public class RoundedButton extends JButton {
     public RoundedButton(String text, int radius) {
         super(text);
         this.radius = radius;
-
         setFocusPainted(false);
         setContentAreaFilled(false);
         setBorderPainted(false);

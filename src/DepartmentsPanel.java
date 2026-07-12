@@ -7,8 +7,33 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+// for database
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.DriverManager;
+
 public class DepartmentsPanel extends JPanel {
     Color Active = new Color(150,100,100);
+
+    // Database Connection
+    public class DBConnection {
+
+        private static final String URL = "jdbc:mysql://localhost:3306/faculty_management_system";
+        private static final String USER = "root";
+        private static final String PASSWORD = "";
+
+        public static Connection getConnection() {
+            try {
+                return DriverManager.getConnection(URL, USER, PASSWORD);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+    }
+
     public DepartmentsPanel() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         add(Box.createVerticalStrut(20));
@@ -49,7 +74,7 @@ public class DepartmentsPanel extends JPanel {
         ButtonRow.add(editBtn);
         ButtonRow.add(deleteBtn);
 
-        add(ButtonRow);
+        add(ButtonRow);//dep
 
         add(Box.createVerticalStrut(10));
 //add Course Table
@@ -84,6 +109,9 @@ public class DepartmentsPanel extends JPanel {
         add(Box.createVerticalStrut(20));
         add(TablePanel);
 
+        // load departments from db (table starts empty otherwise)
+        loadDepartmentsFromDB(model);
+
 //Add Save Changes Button
         JButton saveBtn = new JButton("Save changes");
         saveBtn.setForeground(Color.WHITE);
@@ -97,6 +125,12 @@ public class DepartmentsPanel extends JPanel {
         saveBtnPanel.add(saveBtn);
         add(saveBtnPanel);
 
+        // just refresh the table from DB
+        saveBtn.addActionListener(e -> {
+            loadDepartmentsFromDB(model);
+            JOptionPane.showMessageDialog(this, "Table refreshed from database.");
+        });
+
 // set delete button access
         deleteBtn.addActionListener(e -> {
             int Selected = DepartmentTable.getSelectedRow();
@@ -105,7 +139,16 @@ public class DepartmentsPanel extends JPanel {
 
             if(Selected != -1) {
                 JOptionPane.showMessageDialog(null,"Are you sure.!");
-                model.removeRow(Selected);
+
+                // delete from db first, then remove from table
+                String deptName = model.getValueAt(Selected, 0).toString();
+                boolean deleted = deleteDepartmentFromDB(deptName);
+
+                if (deleted) {
+                    model.removeRow(Selected);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Failed to delete department from database!");
+                }
             }
             else{
                 JOptionPane.showMessageDialog(null,"Please Select a Student First !");
@@ -165,6 +208,20 @@ public class DepartmentsPanel extends JPanel {
                 return;
             }
 
+            // save to db first, then add to table
+            boolean inserted = insertDepartmentToDB(
+                    Name.getText().trim(),
+                    HOD.getText().trim(),
+                    Degree.getText().trim(),
+                    NoOfStaff.getText().trim()
+            );
+                //if insert
+            //i added these unnecssry commt bcz i commit frm the intl app bt i nvr pull to git
+            if (!inserted) {
+                JOptionPane.showMessageDialog(dialog, "Failed to save department to database! (Name may already exist)");
+                return;
+            }
+
             model.addRow(new Object[]{
                     Name.getText(),
                     HOD.getText(),
@@ -173,10 +230,10 @@ public class DepartmentsPanel extends JPanel {
 
             });
 
-                    Name.setText("");
-                    HOD.setText("");
-                    Degree.setText("");
-                    NoOfStaff.setText("");
+            Name.setText("");
+            HOD.setText("");
+            Degree.setText("");
+            NoOfStaff.setText("");
 
             dialog.dispose();
             addBtn.setBackground(Color.WHITE);
@@ -253,6 +310,23 @@ public class DepartmentsPanel extends JPanel {
 
         Update.addActionListener(e -> {
             if(editingRow [0] != -1){
+
+                // update db first, using the old name to find the row
+                String originalName = model.getValueAt(editingRow[0], 0).toString();
+
+                boolean updated = updateDepartmentInDB(
+                        originalName,
+                        EditName.getText().trim(),
+                        EditHOD.getText().trim(),
+                        EditDegree.getText().trim(),
+                        EditNoOfStaff.getText().trim()
+                );
+
+                if (!updated) {
+                    JOptionPane.showMessageDialog(EditDialog, "Failed to update department in database!");
+                    return;
+                }
+
                 model.setValueAt(EditName.getText(),editingRow[0],0);
                 model.setValueAt(EditHOD.getText(),editingRow[0],1);
                 model.setValueAt(EditDegree.getText(),editingRow[0],2);
@@ -263,5 +337,98 @@ public class DepartmentsPanel extends JPanel {
             editBtn.setBackground(Color.WHITE);
         });
     }
-}
 
+    // db helper methods
+
+    // load all departments from db into the table
+    private void loadDepartmentsFromDB(DefaultTableModel model) {
+        String sql = "SELECT name, hod, degree, no_of_staff FROM departments";
+
+        try (Connection con = DBConnection.getConnection()) {
+
+            if (con == null) {
+                System.out.println("Could not connect to database — keeping current table data.");
+                return;
+            }
+
+            try (PreparedStatement ps = con.prepareStatement(sql);
+                 ResultSet rs = ps.executeQuery()) {
+
+                model.setRowCount(0);
+
+                while (rs.next()) {
+                    model.addRow(new Object[]{
+                            rs.getString("name"),
+                            rs.getString("hod"),
+                            rs.getString("degree"),
+                            rs.getString("no_of_staff")
+                    });
+                }
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Database Error while loading departments!");
+        }
+    }
+
+    // add a new department to db
+    private boolean insertDepartmentToDB(String name, String hod, String degree, String noOfStaff) {
+        String sql = "INSERT INTO departments (name, hod, degree, no_of_staff) VALUES (?, ?, ?, ?)";
+
+        try (Connection con = DBConnection.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setString(1, name);
+            ps.setString(2, hod);
+            ps.setString(3, degree);
+            ps.setString(4, noOfStaff);
+
+            ps.executeUpdate();
+            return true;
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+
+    // update a department in db (find by old name)
+    private boolean updateDepartmentInDB(String originalName, String newName, String hod, String degree, String noOfStaff) {
+        String sql = "UPDATE departments SET name=?, hod=?, degree=?, no_of_staff=? WHERE name=?";
+
+        try (Connection con = DBConnection.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setString(1, newName);
+            ps.setString(2, hod);
+            ps.setString(3, degree);
+            ps.setString(4, noOfStaff);
+            ps.setString(5, originalName);
+
+            ps.executeUpdate();
+            return true;
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+
+    // delete a department from db
+    private boolean deleteDepartmentFromDB(String name) {
+        String sql = "DELETE FROM departments WHERE name=?";
+
+        try (Connection con = DBConnection.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setString(1, name);
+            ps.executeUpdate();
+            return true;
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+}

@@ -16,5 +16,5 @@ class Main {
             System.out.println("Connection Failed!");//if fail
         }
 
-    }
+    }//linked to the data base
 }

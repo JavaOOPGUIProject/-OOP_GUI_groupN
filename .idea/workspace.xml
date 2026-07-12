@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="36ffec65-e08c-4c06-a8b7-e57feaba3d67" name="Changes" comment="add button images" />
+    <list default="true" id="36ffec65-e08c-4c06-a8b7-e57feaba3d67" name="Changes" comment="add button images">
+      <change beforePath="$PROJECT_DIR$/src/RoundedButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RoundedButton.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -225,5 +227,16 @@
     <MESSAGE value="update sign in page" />
     <MESSAGE value="add button images" />
     <option name="LAST_COMMIT_MESSAGE" value="add button images" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/RoundedButton.java</url>
+          <line>10</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

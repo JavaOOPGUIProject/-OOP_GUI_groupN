@@ -331,7 +331,7 @@ public class LoginFrame extends JFrame {
 
                     } else if (userRole.equals("Student")) {
 
-                        new Student().setVisible(true);
+                        new Student(sUsername).setVisible(true);
 
                     } else if (userRole.equals("Lecturer")) {
 

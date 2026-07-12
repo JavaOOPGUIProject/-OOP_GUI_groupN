@@ -213,8 +213,6 @@ public class Student extends JFrame {
         field.setOpaque(false);
         field.setBorder(new RoundedBorder(purple, 30, 3));
 
-
-
         row.add(label);
         row.add(field);
         return row;

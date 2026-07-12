@@ -52,6 +52,10 @@ public class Student extends JFrame {
         RoundedButton courseButton =
                 new RoundedButton("Course Enrolled", 20);
 
+
+        Dimension buttonSize = new Dimension(420, 65);
+
+
         profileButton.setBackground(Color.WHITE);
         profileButton.setForeground(purple);
 
@@ -61,7 +65,7 @@ public class Student extends JFrame {
         courseButton.setBackground(Color.WHITE);
         courseButton.setForeground(Color.GRAY);
 
-        Dimension buttonSize = new Dimension(420, 65);
+
 
         profileButton.setMaximumSize(buttonSize);
         timetableButton.setMaximumSize(buttonSize);
@@ -84,6 +88,27 @@ public class Student extends JFrame {
         leftPanel.add(courseButton);
 
         leftPanel.add(Box.createVerticalGlue());
+        RoundedButton logoutButton = new RoundedButton("LOG OUT", 20);
+
+        logoutButton.setPreferredSize(new Dimension(300, 60));
+        logoutButton.setMaximumSize(new Dimension(300, 60));
+        logoutButton.setFont(new Font("Arial", Font.BOLD, 24));
+
+        logoutButton.setBackground(Color.WHITE);
+        logoutButton.setForeground(purple);
+
+        logoutButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        leftPanel.add(logoutButton);
+        leftPanel.add(Box.createVerticalStrut(30));
+
+        logoutButton.addActionListener(e -> {
+
+            dispose();
+
+            new LoginFrame();
+
+        });
 
         ImageIcon Exit = new ImageIcon("images/Exit.png");
         Image scaled = Exit.getImage().getScaledInstance(80,80,Image.SCALE_SMOOTH);
@@ -157,6 +182,7 @@ public class Student extends JFrame {
 
 
         // ---- Button actions ----
+
         profileButton.addActionListener(e  -> cardLayout.show(contentPanel, "profile"));
         timetableButton.addActionListener(e -> cardLayout.show(contentPanel, "timetable"));
         courseButton.addActionListener(e   -> cardLayout.show(contentPanel, "course"));

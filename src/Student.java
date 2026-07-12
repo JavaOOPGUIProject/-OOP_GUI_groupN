@@ -1,5 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class Student extends JFrame {
 
@@ -7,12 +11,16 @@ public class Student extends JFrame {
     CardLayout cardLayout;
     JPanel contentPanel;
 
-    private JTextField fullNameField = new JTextField();
+    // These are now the ACTUAL fields used in the Profile panel
+    private JTextField fullNameField  = new JTextField();
     private JTextField studentNoField = new JTextField();
-    private JTextField degreeField = new JTextField();
-    private JTextField emailField = new JTextField();
-    private JTextField mobileField = new JTextField();
+    private JTextField degreeField    = new JTextField();
+    private JTextField emailField     = new JTextField();
+    private JTextField mobileField    = new JTextField();
 
+    // Username passed in from login. In this table, "student_id" is what
+    // we treat as the username / login key. Change the WHERE column below
+    // if your login actually uses a different column.
     private String username;
 
     public Student(String username) {
@@ -23,12 +31,9 @@ public class Student extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
-
-
         //Left Panel
         JPanel leftPanel = new JPanel();
         leftPanel.setPreferredSize(new Dimension(500, getHeight()));
-        leftPanel.setBackground(new Color(150,100,100));
         leftPanel.setBackground(purple);
         leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
 
@@ -40,21 +45,13 @@ public class Student extends JFrame {
         welcome.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         leftPanel.add(welcome);
-
         leftPanel.add(Box.createVerticalStrut(60));
 
-        RoundedButton profileButton =
-                new RoundedButton("Profile Details", 20);
-
-        RoundedButton timetableButton =
-                new RoundedButton("Time Table", 20);
-
-        RoundedButton courseButton =
-                new RoundedButton("Course Enrolled", 20);
-
+        RoundedButton profileButton   = new RoundedButton("Profile Details", 20);
+        RoundedButton timetableButton = new RoundedButton("Time Table", 20);
+        RoundedButton courseButton    = new RoundedButton("Course Enrolled", 20);
 
         Dimension buttonSize = new Dimension(420, 65);
-
 
         profileButton.setBackground(Color.WHITE);
         profileButton.setForeground(purple);
@@ -84,101 +81,82 @@ public class Student extends JFrame {
         leftPanel.add(Box.createVerticalStrut(35));
 
         leftPanel.add(courseButton);
-
         leftPanel.add(Box.createVerticalGlue());
-        RoundedButton logoutButton = new RoundedButton("LOG OUT", 20);
 
+        RoundedButton logoutButton = new RoundedButton("LOG OUT", 20);
         logoutButton.setPreferredSize(new Dimension(300, 60));
         logoutButton.setMaximumSize(new Dimension(300, 60));
         logoutButton.setFont(new Font("Arial", Font.BOLD, 24));
-
         logoutButton.setBackground(Color.WHITE);
         logoutButton.setForeground(purple);
-
         logoutButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         leftPanel.add(logoutButton);
         leftPanel.add(Box.createVerticalStrut(30));
 
         logoutButton.addActionListener(e -> {
-
             dispose();
-
             new LoginFrame();
-
         });
 
         ImageIcon Exit = new ImageIcon("images/Exit.png");
-        Image scaled = Exit.getImage().getScaledInstance(80,80,Image.SCALE_SMOOTH);
+        Image scaled = Exit.getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH);
         ImageIcon ScaledIcon = new ImageIcon(scaled);
 
         JButton ExitButton = new JButton(ScaledIcon);
-        ExitButton.setAlignmentX((Component.CENTER_ALIGNMENT));
+        ExitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         ExitButton.setBorderPainted(false);
         ExitButton.setContentAreaFilled(false);
         ExitButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
         leftPanel.add(ExitButton);
         leftPanel.add(Box.createVerticalStrut(20));
 
-        ExitButton.addActionListener(e ->{
+        ExitButton.addActionListener(e -> {
             new LoginFrame();
             dispose();
         });
 
-
         //Right panel
-        cardLayout    = new CardLayout();
-        contentPanel  = new JPanel(cardLayout);
+        cardLayout   = new CardLayout();
+        contentPanel = new JPanel(cardLayout);
 
         //Profile Panel
         JPanel profilePanel = new JPanel();
         profilePanel.setBackground(Color.WHITE);
         profilePanel.setLayout(new BoxLayout(profilePanel, BoxLayout.Y_AXIS));
 
-        JLabel title = new JLabel("Profile Details");
-        title.setFont(new Font("Arial", Font.BOLD, 35));
-        title.setForeground(new Color(150,100,100));
-        title.setForeground(purple);
-        title.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        System.out.println(fullNameField);
-
         RoundedButton saveButton = new RoundedButton("Save Changes", 20);
         saveButton.setFont(new Font("Arial", Font.BOLD, 22));
-
         saveButton.setMaximumSize(new Dimension(550, 65));
         saveButton.setPreferredSize(new Dimension(550, 65));
-
         saveButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-
         saveButton.setBackground(purple);
         saveButton.setForeground(Color.WHITE);
 
-        saveButton.setBackground(new Color(150,100,100));
-
         profilePanel.add(Box.createVerticalStrut(60));
+
         JLabel titlepanel = new JLabel("Profile Details");
         titlepanel.setFont(new Font("Arial", Font.BOLD, 35));
-        titlepanel.setForeground(new Color(150,100,100));
         titlepanel.setForeground(purple);
         titlepanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         profilePanel.add(titlepanel);
         profilePanel.add(Box.createVerticalStrut(40));
 
-        profilePanel.add(createRow("Full Name"));
+        // createRow now WIRES the row's JTextField to the real instance field
+        profilePanel.add(createRow("Full Name", fullNameField));
         profilePanel.add(Box.createVerticalStrut(40));
 
-        profilePanel.add(createRow("Student ID"));
+        profilePanel.add(createRow("Student ID", studentNoField));
         profilePanel.add(Box.createVerticalStrut(40));
 
-        profilePanel.add(createRow("Degree"));
+        profilePanel.add(createRow("Degree", degreeField));
         profilePanel.add(Box.createVerticalStrut(40));
 
-        profilePanel.add(createRow("Email"));
+        profilePanel.add(createRow("Email", emailField));
         profilePanel.add(Box.createVerticalStrut(40));
 
-        profilePanel.add(createRow("Mobile Number"));
+        profilePanel.add(createRow("Mobile Number", mobileField));
         profilePanel.add(Box.createVerticalStrut(60));
 
         profilePanel.add(saveButton);
@@ -316,21 +294,62 @@ public class Student extends JFrame {
         coursePanel.add(courseTablePanel);
         coursePanel.add(Box.createVerticalGlue());
 
-        //Left panel elements
+        //Add cards
         contentPanel.add(profilePanel,   "profile");
-        contentPanel.add(timetablePanel, "timetable"); // timetable card added
-        contentPanel.add(coursePanel,    "course");    // course card added
+        contentPanel.add(timetablePanel, "timetable");
+        contentPanel.add(coursePanel,    "course");
 
         //Button actions
-        profileButton.addActionListener(e  -> cardLayout.show(contentPanel, "profile"));
+        profileButton.addActionListener(e   -> cardLayout.show(contentPanel, "profile"));
         timetableButton.addActionListener(e -> cardLayout.show(contentPanel, "timetable"));
-        courseButton.addActionListener(e   -> cardLayout.show(contentPanel, "course"));
+        courseButton.addActionListener(e    -> cardLayout.show(contentPanel, "course"));
 
-        add(leftPanel,   BorderLayout.WEST);
+        // ---- Save button now writes to the database ----
+        saveButton.addActionListener(e -> saveStudentData());
+
+        add(leftPanel,    BorderLayout.WEST);
         add(contentPanel, BorderLayout.CENTER);
 
         setVisible(true);
     }
+
+    // ------------------------------------------------------------------
+    //  DATABASE LOGIC
+    //  Uses your existing DBConnection class (Connection getConnection()).
+    //  Just inserts whatever is typed in the form into the students table.
+    //  Table: students(id, full_name, student_id, degree, email, mobile)
+    // ------------------------------------------------------------------
+
+    private void saveStudentData() {
+        String sql = "INSERT INTO students (full_name, student_id, degree, email, mobile) " +
+                "VALUES (?, ?, ?, ?, ?)";
+
+        try (Connection con = DBConnection.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setString(1, fullNameField.getText().trim());
+            ps.setString(2, studentNoField.getText().trim());
+            ps.setString(3, degreeField.getText().trim());
+            ps.setString(4, emailField.getText().trim());
+            ps.setString(5, mobileField.getText().trim());
+
+            ps.executeUpdate();
+
+            JOptionPane.showMessageDialog(this,
+                    "Data saved successfully.",
+                    "Success", JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this,
+                    "Could not save data:\n" + ex.getMessage(),
+                    "Database Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    // ------------------------------------------------------------------
+    //  UI HELPERS
+    // ------------------------------------------------------------------
 
     // Helper for timetable cells
     private JPanel makeTTCell(String text, Font font,
@@ -348,7 +367,8 @@ public class Student extends JFrame {
         return cell;
     }
 
-    private JPanel createRow(String text) {
+    // Now takes the actual field to bind instead of creating a throwaway one
+    private JPanel createRow(String text, JTextField field) {
         JPanel row = new JPanel();
         row.setBackground(Color.WHITE);
         row.setLayout(new FlowLayout(FlowLayout.LEFT, 60, 0));
@@ -358,11 +378,8 @@ public class Student extends JFrame {
         JLabel label = new JLabel(text);
         label.setPreferredSize(new Dimension(180, 35));
         label.setFont(new Font("Arial", Font.BOLD, 25));
-        label.setForeground(new Color(150,100,100));
-
         label.setForeground(purple);
 
-        JTextField field = new JTextField();
         field.setPreferredSize(new Dimension(500, 55));
         field.setFont(new Font("Arial", Font.PLAIN, 22));
         field.setOpaque(false);
@@ -372,5 +389,4 @@ public class Student extends JFrame {
         row.add(field);
         return row;
     }
-
 }

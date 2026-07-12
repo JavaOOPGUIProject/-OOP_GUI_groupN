@@ -56,25 +56,6 @@ public class DepartmentsPanel extends JPanel {
 
         String[] CourseColumns = {"Name", "HOD", "Degree","No Of Staff"};
         String[][] Coursedata = {
-                {"Software Engineering", "Sanath Kumara", "BICT", "15"},
-                {"Software Engineering", "Sanath Kumara", "BICT", "15"},
-                {"Software Engineering", "Sanath Kumara", "BICT", "15"},
-                {"Software Engineering", "Sanath Kumara", "BICT", "15"},
-                {"Software Engineering", "Sanath Kumara", "BICT", "15"},
-                {"Software Engineering", "Sanath Kumara", "BICT", "15"},
-                {"Software Engineering", "Sanath Kumara", "BICT", "15"},
-                {"Software Engineering", "Sanath Kumara", "BICT", "15"},
-                {"Software Engineering", "Sanath Kumara", "BICT", "15"},
-                {"Software Engineering", "Sanath Kumara", "BICT", "15"},
-                {"Software Engineering", "Sanath Kumara", "BICT", "15"},
-                {"Software Engineering", "Sanath Kumara", "BICT", "15"},
-                {"Software Engineering", "Sanath Kumara", "BICT", "15"},
-                {"Software Engineering", "Sanath Kumara", "BICT", "15"},
-                {"Software Engineering", "Sanath Kumara", "BICT", "15"},
-                {"Software Engineering", "Sanath Kumara", "BICT", "15"},
-                {"Software Engineering", "Sanath Kumara", "BICT", "15"},
-                {"Software Engineering", "Sanath Kumara", "BICT", "15"},
-                {"Software Engineering", "Sanath Kumara", "BICT", "15"}
 
         };
 

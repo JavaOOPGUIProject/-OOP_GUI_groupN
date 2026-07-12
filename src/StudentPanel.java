@@ -21,7 +21,7 @@ public class StudentPanel extends JPanel {
         StudentPage.setForeground(Active);
         StudentPage.setAlignmentX(Component.CENTER_ALIGNMENT);
         add(StudentPage);
-// add exit delet and add buttons
+// add exit delet and add buttons (test)
         JPanel ButtonsRow = new JPanel();
         ButtonsRow.setLayout(new FlowLayout(FlowLayout.CENTER, 150, 20));
         ButtonsRow.setOpaque(false);

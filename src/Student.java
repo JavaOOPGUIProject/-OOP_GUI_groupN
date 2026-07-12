@@ -183,13 +183,145 @@ public class Student extends JFrame {
 
         profilePanel.add(saveButton);
 
+        //Timetable
+        Color timetablePurple = purple;
+        Color cellBg          = new Color(200, 200, 210);
+        int   cellH           = 70;
 
-        // ---- Add cards ----
+        String[] columns = {"Time", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
+        String[][] rows  = {
+                {"08.00", "OOP", "OOP", "OOP", "OOP", "OOP"},
+                {"10.00", "OOP", "OOP", "OOP", "OOP", "OOP"},
+                {null},
+                {"01.00", "SE",  "OOP", "SE",  "SE",  "SE"},
+                {"03.00", "SE",  "OOP", "SE",  "SE",  "SE"},
+        };
+
+        JPanel timetablePanel = new JPanel();
+        timetablePanel.setLayout(new BoxLayout(timetablePanel, BoxLayout.Y_AXIS));
+
+        JLabel ttTitle = new JLabel("Time Table");
+        ttTitle.setFont(new Font("Arial", Font.BOLD, 35));
+        ttTitle.setForeground(purple);
+        ttTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        JPanel tablePanel = new JPanel(new GridBagLayout());
+        tablePanel.setMaximumSize(new Dimension(900, 600));
+        tablePanel.setPreferredSize(new Dimension(900, 500));
+        tablePanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.fill    = GridBagConstraints.BOTH;
+        gbc.weightx = 1.0;
+        gbc.weighty = 1.0;
+        gbc.insets  = new Insets(0, 0, 0, 0);
+
+        //Header row
+        for (int col = 0; col < columns.length; col++) {
+            gbc.gridx     = col;
+            gbc.gridy     = 0;
+            gbc.gridwidth = 1;
+            tablePanel.add(makeTTCell(columns[col],
+                    new Font("Arial", Font.BOLD, 22),
+                    cellBg, timetablePurple, cellH, timetablePurple), gbc);
+        }
+
+        //Data rows
+        int gridRow = 1;
+        for (String[] row : rows) {
+            if (row[0] == null) {
+                gbc.gridx     = 0;
+                gbc.gridy     = gridRow;
+                gbc.gridwidth = 6;
+                tablePanel.add(makeTTCell("Interval",
+                        new Font("Arial", Font.BOLD, 28),
+                        timetablePurple, Color.WHITE, cellH, timetablePurple), gbc);
+                gbc.gridwidth = 1;
+            } else {
+                gbc.gridx = 0;
+                gbc.gridy = gridRow;
+                tablePanel.add(makeTTCell(row[0],
+                        new Font("Arial", Font.BOLD, 20),
+                        cellBg, timetablePurple, cellH, timetablePurple), gbc);
+
+                for (int col = 1; col < columns.length; col++) {
+                    gbc.gridx = col;
+                    tablePanel.add(makeTTCell(row[col],
+                            new Font("Arial", Font.PLAIN, 20),
+                            cellBg, timetablePurple, cellH, timetablePurple), gbc);
+                }
+            }
+            gridRow++;
+        }
+
+        timetablePanel.add(Box.createVerticalStrut(40));
+        timetablePanel.add(ttTitle);
+        timetablePanel.add(Box.createVerticalStrut(30));
+        timetablePanel.add(tablePanel);
+        timetablePanel.add(Box.createVerticalGlue());
+
+        //Course enrolled panel
+        JPanel coursePanel = new JPanel();
+        coursePanel.setLayout(new BoxLayout(coursePanel, BoxLayout.Y_AXIS));
+
+        JLabel courseTitle = new JLabel("Courses Enrolled");
+        courseTitle.setFont(new Font("Arial", Font.BOLD, 35));
+        courseTitle.setForeground(purple);
+        courseTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        String[] courseColumns = {"Course code", "Course name", "Credits", "Grade"};
+        String[][] courseRows  = {
+                {"ETEC 21062", "OOP", "2", "A+"},
+                {"ETEC 21052", "OOP", "2", "B" },
+                {"ETEC 21042", "OOP", "2", "A" },
+                {"ETEC 21032", "OOP", "2", "D" },
+                {"ETEC 21022", "OOP", "2", "C" },
+                {"ETEC 21012", "OOP", "2", "B" },
+        };
+
+        JPanel courseTablePanel = new JPanel(new GridBagLayout());
+        courseTablePanel.setMaximumSize(new Dimension(1000, 700));
+        courseTablePanel.setPreferredSize(new Dimension(1000, 600));
+        courseTablePanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        GridBagConstraints cgbc = new GridBagConstraints();
+        cgbc.fill    = GridBagConstraints.BOTH;
+        cgbc.weightx = 1.0;
+        cgbc.weighty = 1.0;
+        cgbc.insets  = new Insets(0, 0, 0, 0);
+
+        // Header row
+        for (int col = 0; col < courseColumns.length; col++) {
+            cgbc.gridx = col;
+            cgbc.gridy = 0;
+            courseTablePanel.add(makeTTCell(courseColumns[col],
+                    new Font("Arial", Font.BOLD, 22),
+                    cellBg, purple, cellH, purple), cgbc);
+        }
+
+        // Data rows
+        for (int r = 0; r < courseRows.length; r++) {
+            for (int col = 0; col < courseColumns.length; col++) {
+                cgbc.gridx = col;
+                cgbc.gridy = r + 1;
+                courseTablePanel.add(makeTTCell(courseRows[r][col],
+                        new Font("Arial", Font.BOLD, 20),
+                        cellBg, purple, cellH, purple), cgbc);
+            }
+        }
+
+        coursePanel.add(Box.createVerticalStrut(40));
+        coursePanel.add(courseTitle);
+        coursePanel.add(Box.createVerticalStrut(30));
+        coursePanel.add(courseTablePanel);
+        coursePanel.add(Box.createVerticalGlue());
+
+        //Left panel elements
         contentPanel.add(profilePanel,   "profile");
+        contentPanel.add(timetablePanel, "timetable"); // timetable card added
+        contentPanel.add(coursePanel,    "course");    // course card added
 
-
-        // ---- Button actions ----
-
+        //Button actions
         profileButton.addActionListener(e  -> cardLayout.show(contentPanel, "profile"));
         timetableButton.addActionListener(e -> cardLayout.show(contentPanel, "timetable"));
         courseButton.addActionListener(e   -> cardLayout.show(contentPanel, "course"));
@@ -198,6 +330,22 @@ public class Student extends JFrame {
         add(contentPanel, BorderLayout.CENTER);
 
         setVisible(true);
+    }
+
+    // Helper for timetable cells
+    private JPanel makeTTCell(String text, Font font,
+                              Color bg, Color fg,
+                              int preferredHeight, Color borderColor) {
+        JPanel cell = new JPanel(new GridBagLayout());
+        cell.setBackground(bg);
+        cell.setBorder(BorderFactory.createLineBorder(borderColor, 1));
+        cell.setPreferredSize(new Dimension(0, preferredHeight));
+
+        JLabel lbl = new JLabel(text, SwingConstants.CENTER);
+        lbl.setFont(font);
+        lbl.setForeground(fg);
+        cell.add(lbl);
+        return cell;
     }
 
     private JPanel createRow(String text) {
@@ -219,8 +367,6 @@ public class Student extends JFrame {
         field.setFont(new Font("Arial", Font.PLAIN, 22));
         field.setOpaque(false);
         field.setBorder(new RoundedBorder(purple, 30, 3));
-
-
 
         row.add(label);
         row.add(field);

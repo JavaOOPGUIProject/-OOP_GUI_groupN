@@ -1,12 +1,16 @@
 import javax.swing.*;
 import java.awt.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class GUI extends JFrame {
 
     JPanel currentCenterPanel;
 
-    public GUI(){
+    public GUI(String username){
         Color Active = new Color(150,100,100);
+        String AdminName = username;
 
         setTitle("Students Admin page ");
         setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -24,7 +28,7 @@ public class GUI extends JFrame {
 
         LsidePanel.add(Box.createVerticalStrut(50));
 // create left panel title
-        JLabel Title = new JLabel("Welcome, Admin");
+        JLabel Title = new JLabel("Welcome , " + AdminName);
         Title.setFont(new Font("SansSerif", Font.BOLD,45));
         Title.setForeground(Color.WHITE);
         Title.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -129,6 +133,11 @@ public class GUI extends JFrame {
         LsidePanel.add(ExitButton);
         LsidePanel.add(Box.createVerticalStrut(20));
 
+        ExitButton.addActionListener(e ->{
+            new LoginFrame();
+            dispose();
+        });
+
 // create right side panel (Students shown by default)
         switchCenterPanel(new StudentPanel());
     }
@@ -146,7 +155,4 @@ public class GUI extends JFrame {
         repaint();
     }
 
-    public static void main(String[] args) {
-        new GUI().setVisible(true);
-    }
 }

@@ -7,12 +7,23 @@ public class Student extends JFrame {
     CardLayout cardLayout;
     JPanel contentPanel;
 
-    public Student() {
+    private JTextField fullNameField = new JTextField();
+    private JTextField studentNoField = new JTextField();
+    private JTextField degreeField = new JTextField();
+    private JTextField emailField = new JTextField();
+    private JTextField mobileField = new JTextField();
 
+    private String username;
+
+    public Student(String username) {
+
+        this.username = username;
         setTitle("Student Dashboard");
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
+
+
 
         //Left Panel
         JPanel leftPanel = new JPanel();
@@ -23,7 +34,7 @@ public class Student extends JFrame {
 
         leftPanel.add(Box.createVerticalStrut(40));
 
-        JLabel welcome = new JLabel("Welcome, Kumar");
+        JLabel welcome = new JLabel("Welcome," + username);
         welcome.setFont(new Font("Arial", Font.BOLD, 35));
         welcome.setForeground(Color.WHITE);
         welcome.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -41,6 +52,10 @@ public class Student extends JFrame {
         RoundedButton courseButton =
                 new RoundedButton("Course Enrolled", 20);
 
+
+        Dimension buttonSize = new Dimension(420, 65);
+
+
         profileButton.setBackground(Color.WHITE);
         profileButton.setForeground(purple);
 
@@ -50,7 +65,7 @@ public class Student extends JFrame {
         courseButton.setBackground(Color.WHITE);
         courseButton.setForeground(Color.GRAY);
 
-        Dimension buttonSize = new Dimension(420, 65);
+
 
         profileButton.setMaximumSize(buttonSize);
         timetableButton.setMaximumSize(buttonSize);
@@ -73,6 +88,44 @@ public class Student extends JFrame {
         leftPanel.add(courseButton);
 
         leftPanel.add(Box.createVerticalGlue());
+        RoundedButton logoutButton = new RoundedButton("LOG OUT", 20);
+
+        logoutButton.setPreferredSize(new Dimension(300, 60));
+        logoutButton.setMaximumSize(new Dimension(300, 60));
+        logoutButton.setFont(new Font("Arial", Font.BOLD, 24));
+
+        logoutButton.setBackground(Color.WHITE);
+        logoutButton.setForeground(purple);
+
+        logoutButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        leftPanel.add(logoutButton);
+        leftPanel.add(Box.createVerticalStrut(30));
+
+        logoutButton.addActionListener(e -> {
+
+            dispose();
+
+            new LoginFrame();
+
+        });
+
+        ImageIcon Exit = new ImageIcon("images/Exit.png");
+        Image scaled = Exit.getImage().getScaledInstance(80,80,Image.SCALE_SMOOTH);
+        ImageIcon ScaledIcon = new ImageIcon(scaled);
+
+        JButton ExitButton = new JButton(ScaledIcon);
+        ExitButton.setAlignmentX((Component.CENTER_ALIGNMENT));
+        ExitButton.setBorderPainted(false);
+        ExitButton.setContentAreaFilled(false);
+        ExitButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        leftPanel.add(ExitButton);
+        leftPanel.add(Box.createVerticalStrut(20));
+
+        ExitButton.addActionListener(e ->{
+            new LoginFrame();
+            dispose();
+        });
 
 
         //Right panel
@@ -90,20 +143,7 @@ public class Student extends JFrame {
         title.setForeground(purple);
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        profilePanel.add(Box.createVerticalStrut(50));
-        profilePanel.add(title);
-        profilePanel.add(Box.createVerticalStrut(70));
-
-        profilePanel.add(createRow("Full Name"));
-        profilePanel.add(Box.createVerticalStrut(40));
-        profilePanel.add(createRow("Student ID"));
-        profilePanel.add(Box.createVerticalStrut(40));
-        profilePanel.add(createRow("Degree"));
-        profilePanel.add(Box.createVerticalStrut(40));
-        profilePanel.add(createRow("Email"));
-        profilePanel.add(Box.createVerticalStrut(40));
-        profilePanel.add(createRow("Mobile Number"));
-        profilePanel.add(Box.createVerticalStrut(60));
+        System.out.println(fullNameField);
 
         RoundedButton saveButton = new RoundedButton("Save Changes", 20);
         saveButton.setFont(new Font("Arial", Font.BOLD, 22));
@@ -120,6 +160,21 @@ public class Student extends JFrame {
 
         profilePanel.add(saveButton);
 
+        profilePanel.add(createRow("Full Name"));
+        profilePanel.add(Box.createVerticalStrut(40));
+
+        profilePanel.add(createRow("Student ID"));
+        profilePanel.add(Box.createVerticalStrut(40));
+
+        profilePanel.add(createRow("Degree"));
+        profilePanel.add(Box.createVerticalStrut(40));
+
+        profilePanel.add(createRow("Email"));
+        profilePanel.add(Box.createVerticalStrut(40));
+
+        profilePanel.add(createRow("Mobile Number"));
+        profilePanel.add(Box.createVerticalStrut(60));
+
 
 
         // ---- Add cards ----
@@ -127,6 +182,7 @@ public class Student extends JFrame {
 
 
         // ---- Button actions ----
+
         profileButton.addActionListener(e  -> cardLayout.show(contentPanel, "profile"));
         timetableButton.addActionListener(e -> cardLayout.show(contentPanel, "timetable"));
         courseButton.addActionListener(e   -> cardLayout.show(contentPanel, "course"));

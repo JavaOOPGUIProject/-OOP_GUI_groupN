@@ -9,7 +9,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class StudentPanel extends JPanel {
 
-    Color Active = new Color(0,0,124);
+    Color Active = new Color(150,100,100);
 
     public StudentPanel() {
 

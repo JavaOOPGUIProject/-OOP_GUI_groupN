@@ -8,7 +8,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 public class coursesPanel extends JPanel {
-    Color Active = new Color(0,0,12);
+    Color Active = new Color(150,100,100);
     public coursesPanel() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         add(Box.createVerticalStrut(20));

@@ -23,7 +23,7 @@ public class LoginFrame extends JFrame {
     JLabel signUpTab;
 
 
-    Color purple = new Color(0, 0, 124);
+    Color purple = new Color(150, 100, 100);
     Color activeColor = purple;
     Color inactiveColor = Color.GRAY;
 

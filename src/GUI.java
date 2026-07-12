@@ -9,7 +9,7 @@ public class GUI extends JFrame {
     JPanel currentCenterPanel;
 
     public GUI(String username){
-        Color Active = new Color(0,0,128);
+        Color Active = new Color(150,100,100);
         String AdminName = username;
 
         setTitle("Students Admin page ");

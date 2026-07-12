@@ -52,6 +52,10 @@ public class Student extends JFrame {
         RoundedButton courseButton =
                 new RoundedButton("Course Enrolled", 20);
 
+
+        Dimension buttonSize = new Dimension(420, 65);
+
+
         profileButton.setBackground(Color.WHITE);
         profileButton.setForeground(purple);
 
@@ -60,8 +64,6 @@ public class Student extends JFrame {
 
         courseButton.setBackground(Color.WHITE);
         courseButton.setForeground(Color.GRAY);
-
-        Dimension buttonSize = new Dimension(420, 65);
 
         profileButton.setMaximumSize(buttonSize);
         timetableButton.setMaximumSize(buttonSize);
@@ -84,6 +86,27 @@ public class Student extends JFrame {
         leftPanel.add(courseButton);
 
         leftPanel.add(Box.createVerticalGlue());
+        RoundedButton logoutButton = new RoundedButton("LOG OUT", 20);
+
+        logoutButton.setPreferredSize(new Dimension(300, 60));
+        logoutButton.setMaximumSize(new Dimension(300, 60));
+        logoutButton.setFont(new Font("Arial", Font.BOLD, 24));
+
+        logoutButton.setBackground(Color.WHITE);
+        logoutButton.setForeground(purple);
+
+        logoutButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        leftPanel.add(logoutButton);
+        leftPanel.add(Box.createVerticalStrut(30));
+
+        logoutButton.addActionListener(e -> {
+
+            dispose();
+
+            new LoginFrame();
+
+        });
 
         ImageIcon Exit = new ImageIcon("images/Exit.png");
         Image scaled = Exit.getImage().getScaledInstance(80,80,Image.SCALE_SMOOTH);
@@ -96,8 +119,7 @@ public class Student extends JFrame {
         ExitButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
         leftPanel.add(ExitButton);
         leftPanel.add(Box.createVerticalStrut(20));
-
-        ExitButton.addActionListener(e ->{
+         ExitButton.addActionListener(e ->{
             new LoginFrame();
             dispose();
         });
@@ -133,7 +155,15 @@ public class Student extends JFrame {
 
         saveButton.setBackground(new Color(150,100,100));
 
-        profilePanel.add(saveButton);
+        profilePanel.add(Box.createVerticalStrut(60));
+        JLabel titlepanel = new JLabel("Profile Details");
+        titlepanel.setFont(new Font("Arial", Font.BOLD, 35));
+        titlepanel.setForeground(new Color(150,100,100));
+        titlepanel.setForeground(purple);
+        titlepanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        profilePanel.add(titlepanel);
+        profilePanel.add(Box.createVerticalStrut(40));
 
         profilePanel.add(createRow("Full Name"));
         profilePanel.add(Box.createVerticalStrut(40));
@@ -150,6 +180,7 @@ public class Student extends JFrame {
         profilePanel.add(createRow("Mobile Number"));
         profilePanel.add(Box.createVerticalStrut(60));
 
+        profilePanel.add(saveButton);
 
 
         // ---- Add cards ----
@@ -157,6 +188,7 @@ public class Student extends JFrame {
 
 
         // ---- Button actions ----
+
         profileButton.addActionListener(e  -> cardLayout.show(contentPanel, "profile"));
         timetableButton.addActionListener(e -> cardLayout.show(contentPanel, "timetable"));
         courseButton.addActionListener(e   -> cardLayout.show(contentPanel, "course"));
@@ -181,33 +213,7 @@ public class Student extends JFrame {
 
         label.setForeground(purple);
 
-        JTextField field;
-
-        switch (text) {
-            case "Full Name":
-                field = fullNameField;
-                break;
-
-            case "Student ID":
-                field = studentNoField;
-                break;
-
-            case "Degree":
-                field = degreeField;
-                break;
-
-            case "Email":
-                field = emailField;
-                break;
-
-            case "Mobile Number":
-                field = mobileField;
-                break;
-
-            default:
-                field = new JTextField();
-        }
-
+        JTextField field = new JTextField();
         field.setPreferredSize(new Dimension(500, 55));
         field.setFont(new Font("Arial", Font.PLAIN, 22));
         field.setOpaque(false);

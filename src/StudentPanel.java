@@ -18,7 +18,7 @@ import java.sql.DriverManager;
 public class StudentPanel extends JPanel {
 
     Color Active = new Color(150,100,100);
-    //Database Connection
+    // Database Connection
     public class DBConnection {
 
         private static final String URL = "jdbc:mysql://localhost:3306/faculty_management_system";

@@ -53,12 +53,17 @@ public class GUI extends JFrame {
             Navigate.setHorizontalAlignment(SwingConstants.LEFT);
             Navigate.setHorizontalTextPosition(SwingConstants.RIGHT);
             Navigate.setIconTextGap(15);
-            Navigate.setForeground(Active);
+            Navigate.setForeground(Color.DARK_GRAY);
             Navigate.setBackground(Color.WHITE);
             Navigate.setPreferredSize(new Dimension(350, 55));
             Navigate.setFont(new Font("SansSerif", Font.BOLD, 32));
             Navigate.setCursor(new Cursor(Cursor.HAND_CURSOR));
-
+            if (NavigateItems[i].equals("Students")) {
+                Navigate.setForeground(Active);
+            }
+            else {
+                Navigate.setForeground(Color.DARK_GRAY);
+            }
 
 
             NavButtons[i] = Navigate;
@@ -66,8 +71,9 @@ public class GUI extends JFrame {
             // On click: change only this button's font color, reset all others
             Navigate.addActionListener(e -> {
                 for (JButton btn : NavButtons) {
-                    btn.setForeground(Active);
+                    btn.setForeground(Color.DARK_GRAY);
                 }
+                Navigate.setForeground(Active);
             });
 
             JPanel NavigateWrapper = new JPanel(new FlowLayout(FlowLayout.CENTER,8,0));

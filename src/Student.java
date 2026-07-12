@@ -181,7 +181,33 @@ public class Student extends JFrame {
 
         label.setForeground(purple);
 
-        JTextField field = new JTextField();
+        JTextField field;
+
+        switch (text) {
+            case "Full Name":
+                field = fullNameField;
+                break;
+
+            case "Student ID":
+                field = studentNoField;
+                break;
+
+            case "Degree":
+                field = degreeField;
+                break;
+
+            case "Email":
+                field = emailField;
+                break;
+
+            case "Mobile Number":
+                field = mobileField;
+                break;
+
+            default:
+                field = new JTextField();
+        }
+
         field.setPreferredSize(new Dimension(500, 55));
         field.setFont(new Font("Arial", Font.PLAIN, 22));
         field.setOpaque(false);

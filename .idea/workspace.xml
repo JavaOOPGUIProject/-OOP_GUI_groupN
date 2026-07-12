@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="36ffec65-e08c-4c06-a8b7-e57feaba3d67" name="Changes" comment="update GUI">
+    <list default="true" id="36ffec65-e08c-4c06-a8b7-e57feaba3d67" name="Changes" comment="update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LoginFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LoginFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Student.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -181,7 +180,15 @@
       <option name="project" value="LOCAL" />
       <updated>1783796514244</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="update">
+      <option name="closed" value="true" />
+      <created>1783832025242</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1783832025242</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -198,13 +205,13 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Upadate file for set up this project" />
     <MESSAGE value="ADD mysql connector" />
-    <MESSAGE value="update" />
     <MESSAGE value="All my mysql libries" />
     <MESSAGE value="Create data base connection with signup frame" />
     <MESSAGE value="update sign in page" />
     <MESSAGE value="Login page connect to database and create Lecturer file" />
     <MESSAGE value="Login page upadate" />
     <MESSAGE value="update GUI" />
-    <option name="LAST_COMMIT_MESSAGE" value="update GUI" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
 </project>

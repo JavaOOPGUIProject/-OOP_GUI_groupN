@@ -33,7 +33,7 @@ public class DegreesPanel extends JPanel {
             }
         }
     }
-
+//degree
     public DegreesPanel() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         add(Box.createVerticalStrut(20));

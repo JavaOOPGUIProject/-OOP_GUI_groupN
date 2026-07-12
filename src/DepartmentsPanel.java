@@ -74,7 +74,7 @@ public class DepartmentsPanel extends JPanel {
         ButtonRow.add(editBtn);
         ButtonRow.add(deleteBtn);
 
-        add(ButtonRow);
+        add(ButtonRow);//dep
 
         add(Box.createVerticalStrut(10));
 //add Course Table

@@ -249,19 +249,26 @@ public class LoginFrame extends JFrame {
         Button_Panel.add(lecturer_button);
 
 
-        admin_button.addActionListener(e -> selectedRole = "Admin");
+        admin_button.addActionListener(e -> {
+            selectedRole = "Admin";
+            selectRoleButton(admin_button, admin_button, student_button, lecturer_button);
+        });
 
-        student_button.addActionListener(e -> selectedRole = "Student");
+        student_button.addActionListener(e -> {
+            selectedRole = "Student";
+            selectRoleButton(student_button, admin_button, student_button, lecturer_button);
+        });
 
-        lecturer_button.addActionListener(e -> selectedRole = "Lecturer");
-
-
+        lecturer_button.addActionListener(e -> {
+            selectedRole = "Lecturer";
+            selectRoleButton(lecturer_button, admin_button, student_button, lecturer_button);
+        });
 
 
 
         //Sign In button — placed right below the 3 role buttons
 
-        JButton signInButton1 = new JButton("Sign In");
+        RoundedButton signInButton1 = new RoundedButton("Sign In", 35);
         signInButton1.setBackground(activeColor);
         signInButton1.setBackground(purple);
         signInButton1.setForeground(Color.WHITE);
@@ -373,6 +380,7 @@ public class LoginFrame extends JFrame {
         lecturer_button.setForeground(Color.WHITE);
 
         selected.setBackground(new Color(220,150,150));
+        selected.setForeground(Color.WHITE);
     }
 
     //SignUp form Function
@@ -476,9 +484,6 @@ public class LoginFrame extends JFrame {
         Button_Panel.add(lecturer_button);
 
         //Sign up Button
-
-        JButton signUpButton = new JButton("Sign Up");
-
         RoundedButton signUpButton3 = new RoundedButton("Sign Up",30);
         signUpButton3.setBackground(purple);
         signUpButton3.setForeground(Color.WHITE);
@@ -511,9 +516,20 @@ public class LoginFrame extends JFrame {
         panel.add(Box.createVerticalStrut(10));
         panel.add(signUpButton3);
 
-        admin_button.addActionListener(e -> singupRole = "Admin");
-        student_button.addActionListener(e -> singupRole = "Student");
-        lecturer_button.addActionListener(e ->singupRole = "Lecturer");
+        admin_button.addActionListener(e -> {
+            singupRole = "Admin";
+            selectRoleButton(admin_button, admin_button, student_button, lecturer_button);
+        });
+
+        student_button.addActionListener(e -> {
+            singupRole = "Student";
+            selectRoleButton(student_button, admin_button, student_button, lecturer_button);
+        });
+
+        lecturer_button.addActionListener(e -> {
+            singupRole = "Lecturer";
+            selectRoleButton(lecturer_button, admin_button, student_button, lecturer_button);
+        });
 
 
         signUpButton3.addActionListener(e -> {

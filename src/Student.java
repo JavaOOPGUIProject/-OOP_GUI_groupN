@@ -65,8 +65,6 @@ public class Student extends JFrame {
         courseButton.setBackground(Color.WHITE);
         courseButton.setForeground(Color.GRAY);
 
-
-
         profileButton.setMaximumSize(buttonSize);
         timetableButton.setMaximumSize(buttonSize);
         courseButton.setMaximumSize(buttonSize);
@@ -158,7 +156,15 @@ public class Student extends JFrame {
 
         saveButton.setBackground(new Color(150,100,100));
 
-        profilePanel.add(saveButton);
+        profilePanel.add(Box.createVerticalStrut(60));
+        JLabel titlepanel = new JLabel("Profile Details");
+        titlepanel.setFont(new Font("Arial", Font.BOLD, 35));
+        titlepanel.setForeground(new Color(150,100,100));
+        titlepanel.setForeground(purple);
+        titlepanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        profilePanel.add(titlepanel);
+        profilePanel.add(Box.createVerticalStrut(40));
 
         profilePanel.add(createRow("Full Name"));
         profilePanel.add(Box.createVerticalStrut(40));
@@ -175,6 +181,7 @@ public class Student extends JFrame {
         profilePanel.add(createRow("Mobile Number"));
         profilePanel.add(Box.createVerticalStrut(60));
 
+        profilePanel.add(saveButton);
 
 
         // ---- Add cards ----

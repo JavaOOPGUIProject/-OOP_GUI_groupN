@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a806d521-da65-469b-b29e-f79f769ada88" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LoginFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LoginFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RoundedButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RoundedButton.java" afterDir="false" />
+    <list default="true" id="36ffec65-e08c-4c06-a8b7-e57feaba3d67" name="Changes" comment="round the sign in button ande delete never use lines">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Student.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -16,34 +13,251 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Gayanshyamal&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/JavaOOPGUIProject/-OOP_GUI_groupN.git&quot;,
+    &quot;accountId&quot;: &quot;48f88699-f815-40dd-a886-ed1b67f5d142&quot;
+  }
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="3GLRc248XSmk66vCBnSeiNxo5jh" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.GUI.executor": "Run",
     "Application.Main.executor": "Run",
-    "git-widget-placeholder": "Merging CT/2022/009",
-    "node.js.selected.package.tslint": "(autodetect)"
+    "Application.StudentPanel.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
 }]]></component>
-  <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="OOP_GUI_groupN" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.Main" />
-      </list>
-    </recent_temporary>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.32098.37" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="36ffec65-e08c-4c06-a8b7-e57feaba3d67" name="Changes" comment="" />
+      <created>1783748940537</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1783748940537</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Upadate file for set up this project">
+      <option name="closed" value="true" />
+      <created>1783749188606</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1783749188606</updated>
+    </task>
+    <task id="LOCAL-00002" summary="ADD mysql connector">
+      <option name="closed" value="true" />
+      <created>1783753038012</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1783753038012</updated>
+    </task>
+    <task id="LOCAL-00003" summary="ADD mysql connector">
+      <option name="closed" value="true" />
+      <created>1783753097016</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1783753097016</updated>
+    </task>
+    <task id="LOCAL-00004" summary="update">
+      <option name="closed" value="true" />
+      <created>1783753251014</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1783753251014</updated>
+    </task>
+    <task id="LOCAL-00005" summary="All my mysql libries">
+      <option name="closed" value="true" />
+      <created>1783753688230</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1783753688230</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Create data base connection with signup frame">
+      <option name="closed" value="true" />
+      <created>1783765435898</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1783765435898</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Create data base connection with signup frame">
+      <option name="closed" value="true" />
+      <created>1783776858991</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1783776858991</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Create data base connection with signup frame">
+      <option name="closed" value="true" />
+      <created>1783777957195</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1783777957195</updated>
+    </task>
+    <task id="LOCAL-00009" summary="update sign in page">
+      <option name="closed" value="true" />
+      <created>1783780631162</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1783780631162</updated>
+    </task>
+    <task id="LOCAL-00010" summary="update sign in page">
+      <option name="closed" value="true" />
+      <created>1783781037982</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1783781037982</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Login page connect to database and create Lecturer file">
+      <option name="closed" value="true" />
+      <created>1783792091935</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1783792091935</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Login page upadate">
+      <option name="closed" value="true" />
+      <created>1783794858932</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1783794858932</updated>
+    </task>
+    <task id="LOCAL-00013" summary="add the logout button to the studentpanal">
+      <option name="closed" value="true" />
+      <created>1783810481415</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1783810481415</updated>
+    </task>
+    <task id="LOCAL-00014" summary="fix logout button and like to login panale">
+      <option name="closed" value="true" />
+      <created>1783810817285</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1783810817285</updated>
+    </task>
+    <task id="LOCAL-00015" summary="round the sign in button ande delete never use lines">
+      <option name="closed" value="true" />
+      <created>1783812377945</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1783812377945</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="main" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="*" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Upadate file for set up this project" />
+    <MESSAGE value="ADD mysql connector" />
+    <MESSAGE value="update" />
+    <MESSAGE value="All my mysql libries" />
+    <MESSAGE value="Create data base connection with signup frame" />
+    <MESSAGE value="update sign in page" />
+    <MESSAGE value="Login page connect to database and create Lecturer file" />
+    <MESSAGE value="Login page upadate" />
+    <MESSAGE value="add the logout button to the studentpanal" />
+    <MESSAGE value="fix logout button and like to login panale" />
+    <MESSAGE value="round the sign in button ande delete never use lines" />
+    <option name="LAST_COMMIT_MESSAGE" value="round the sign in button ande delete never use lines" />
   </component>
 </project>

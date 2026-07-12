@@ -215,7 +215,8 @@ public class DepartmentsPanel extends JPanel {
                     Degree.getText().trim(),
                     NoOfStaff.getText().trim()
             );
-
+                //if insert
+            //i added these unnecssry commt bcz i commit frm the intl app bt i nvr pull to git
             if (!inserted) {
                 JOptionPane.showMessageDialog(dialog, "Failed to save department to database! (Name may already exist)");
                 return;

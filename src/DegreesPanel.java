@@ -310,7 +310,7 @@ public class DegreesPanel extends JPanel {
             EditNoOfStudent.setText(DegreesTable.getValueAt(Selected,2).toString());
 
             editingRow [0] = Selected;
-            EditDialog.setVisible(true);
+            EditDialog.setVisible(true);//if only true
         });
 
         Update.addActionListener(e -> {

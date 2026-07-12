@@ -13,7 +13,7 @@ class Main {
         if (con != null) {
             System.out.println("Database Connected!");
         } else {
-            System.out.println("Connection Failed!");
+            System.out.println("Connection Failed!");//if fail
         }
 
     }

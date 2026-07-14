@@ -4,15 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="36ffec65-e08c-4c06-a8b7-e57feaba3d67" name="Changes" comment="round the sign in button ande delete never use lines">
+    <list default="true" id="36ffec65-e08c-4c06-a8b7-e57feaba3d67" name="Changes" comment="Update full code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/faculty_management_system.sql" beforeDir="false" afterPath="$PROJECT_DIR$/faculty_management_system.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/OOP_GUI_groupN/LecturePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/OOP_GUI_groupN/Lecturer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/OOP_GUI_groupN/Student.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/OOP_GUI_groupN/StudentPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/OOP_GUI_groupN/coursesPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/login_user.sql" beforeDir="false" afterPath="$PROJECT_DIR$/resources/login_user.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -216,7 +209,23 @@
       <option name="project" value="LOCAL" />
       <updated>1783812377945</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Update full code">
+      <option name="closed" value="true" />
+      <created>1784043728427</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1784043728427</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Update full code">
+      <option name="closed" value="true" />
+      <created>1784043751400</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1784043751400</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -268,6 +277,7 @@
     <MESSAGE value="add the logout button to the studentpanal" />
     <MESSAGE value="fix logout button and like to login panale" />
     <MESSAGE value="round the sign in button ande delete never use lines" />
-    <option name="LAST_COMMIT_MESSAGE" value="round the sign in button ande delete never use lines" />
+    <MESSAGE value="Update full code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update full code" />
   </component>
 </project>
